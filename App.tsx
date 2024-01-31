@@ -1,18 +1,25 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text';
+import {ThemeProvider} from '@shopify/restyle';
+import {theme} from './src/theme/theme';
+import {Box} from './src/components/Box';
+import {Button} from './src/components/Button';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <Text variant="paragraphSmall">Olá mundo</Text>
-      <Text
-        variant="paragraphSmall"
-        italic
-        style={{fontFamily: 'Satoshi-Bold'}}>
-        Olá mundo
-      </Text>
-    </SafeAreaView>
+    <ThemeProvider theme={theme}>
+      <SafeAreaView>
+        <View style={{padding: 20}}>
+          <Text variant="paragraphSmall">Nubble App</Text>
+
+          <Box marginBottom="s24">
+            <Button title="Entrar" />
+          </Box>
+          <Button title="Loading" isLoading />
+        </View>
+      </SafeAreaView>
+    </ThemeProvider>
   );
 }
 

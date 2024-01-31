@@ -59,7 +59,7 @@ export const theme = createTheme({
   textVariants: {
     defaults: {},
   },
-});
+} as const);
 
 export type Theme = typeof theme;
 export type ThemeColors = keyof Theme['colors'];
