@@ -5,7 +5,7 @@ import {Text} from './src/components/Text';
 function App(): React.JSX.Element {
   return (
     <SafeAreaView>
-      <Text>Olá mundo</Text>
+      <Text variant="paragraphSmall">Olá mundo</Text>
     </SafeAreaView>
   );
 }
