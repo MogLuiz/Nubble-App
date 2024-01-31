@@ -6,7 +6,10 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView>
       <Text variant="paragraphSmall">Olá mundo</Text>
-      <Text variant="paragraphSmall" style={{fontFamily: 'Satoshi-Bold'}}>
+      <Text
+        variant="paragraphSmall"
+        italic
+        style={{fontFamily: 'Satoshi-Bold'}}>
         Olá mundo
       </Text>
     </SafeAreaView>
