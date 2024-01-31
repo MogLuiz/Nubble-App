@@ -11,7 +11,7 @@ function App(): React.JSX.Element {
     <ThemeProvider theme={theme}>
       <SafeAreaView>
         <View style={{padding: 20}}>
-          <Text variant="paragraphSmall">Nubble App</Text>
+          <Text preset="paragraphSmall">Nubble App</Text>
 
           <Box marginBottom="s24">
             <Button title="Entrar" />

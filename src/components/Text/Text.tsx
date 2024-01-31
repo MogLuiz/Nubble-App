@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text as RNText, TextProps} from 'react-native';
 import {TextVariants} from './types';
 import {$fontSizes, getFontFamily} from './utils';
+import {createText} from '@shopify/restyle';
+import {Theme} from '../../theme/theme';
 
-export interface ITextProps extends TextProps {
-  variant?: TextVariants;
+const RestyleText = createText<Theme>();
+
+export interface ITextProps extends React.ComponentProps<typeof RestyleText> {
+  preset?: TextVariants;
   bold?: boolean;
   italic?: boolean;
   semiBold?: boolean;
@@ -12,18 +15,21 @@ export interface ITextProps extends TextProps {
 
 export const Text = ({
   children,
-  variant = 'paragraphMedium',
+  preset = 'paragraphMedium',
   bold,
   italic,
   semiBold,
   style,
   ...rest
 }: ITextProps): React.JSX.Element => {
-  const fontFamily = getFontFamily(variant, bold, italic, semiBold);
+  const fontFamily = getFontFamily(preset, bold, italic, semiBold);
 
   return (
-    <RNText {...rest} style={[$fontSizes[variant], style, {fontFamily}]}>
+    <RestyleText
+      color="backgroundContrast"
+      {...rest}
+      style={[$fontSizes[preset], style, {fontFamily}]}>
       {children}
-    </RNText>
+    </RestyleText>
   );
 };

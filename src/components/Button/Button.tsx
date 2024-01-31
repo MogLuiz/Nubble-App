@@ -22,7 +22,7 @@ export const Button = ({title, isLoading, ...rest}: IButtonProps) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <Text variant="paragraphMedium" bold style={{color: '#fff'}}>
+        <Text preset="paragraphMedium" bold color="primaryContrast">
           {title}
         </Text>
       )}
