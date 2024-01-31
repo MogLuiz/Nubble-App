@@ -1,10 +1,12 @@
 import React from 'react';
 import {SafeAreaView, View} from 'react-native';
-import {Text} from './src/components/Text';
 import {ThemeProvider} from '@shopify/restyle';
-import {theme} from './src/theme';
-import {Box} from './src/components/Box';
-import {Button} from './src/components/Button';
+
+import {theme} from '@theme';
+
+import {Box} from '@components/Box';
+import {Text} from '@components/Text';
+import {Button} from '@components/Button';
 
 const App = (): React.JSX.Element => (
   <ThemeProvider theme={theme}>

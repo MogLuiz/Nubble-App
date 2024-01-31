@@ -1,8 +1,11 @@
 import React from 'react';
-import {TextVariants} from './types';
-import {$fontSizes, getFontFamily} from './utils';
 import {createText} from '@shopify/restyle';
-import {Theme} from '../../theme';
+
+import {$fontSizes, getFontFamily} from './utils';
+
+import {Theme} from '@theme';
+
+import {TextVariants} from './types';
 
 const RestyleText = createText<Theme>();
 
