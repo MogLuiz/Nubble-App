@@ -1,5 +1,4 @@
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
 
 import {buttonPresets} from './utils';
 
@@ -8,6 +7,7 @@ import {
   TouchableOpacityBox,
   TouchableOpacityBoxProps,
 } from '@components/TouchableOpacityBox';
+import {ActivityIndicator} from '@components/ActivityIndicator';
 
 export type ButtonPreset = 'primary' | 'outline';
 

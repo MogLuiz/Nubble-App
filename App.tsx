@@ -18,7 +18,7 @@ const App = (): React.JSX.Element => (
           <Button title="Entrar" />
         </Box>
         <Box marginBottom="s24">
-          <Button preset="outline" title="Outline" />
+          <Button preset="outline" title="Outlier" />
         </Box>
         <Button title="Loading" isLoading />
       </View>
