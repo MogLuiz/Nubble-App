@@ -15,7 +15,7 @@ const App = (): React.JSX.Element => (
         <Text preset="paragraphSmall">Nubble App</Text>
 
         <Box marginBottom="s24">
-          <Button title="Entrar" />
+          <Button title="Entrar" disabled />
         </Box>
         <Box marginBottom="s24">
           <Button preset="outline" title="Outlier" />
