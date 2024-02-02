@@ -15,6 +15,10 @@ const App = (): React.JSX.Element => (
 
         <Icon variant="eyeOn" />
         <Icon variant="eyeOff" />
+        <Icon variant="bookmarkFill" />
+        <Icon variant="settings" />
+        <Icon variant="camera" />
+        <Icon variant="chevronRight" />
       </View>
     </SafeAreaView>
   </ThemeProvider>
