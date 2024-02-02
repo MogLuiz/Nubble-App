@@ -7,7 +7,9 @@
       "@assets/*": ["src/assets/*"],
       "@screens": ["src/screens"],
       "@theme": ["src/theme"],
-      "@components/*": ["src/components/*"]
+      "@types": ["src/types"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }

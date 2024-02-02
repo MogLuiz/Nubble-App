@@ -1,12 +1,9 @@
 import React from 'react';
 import {Svg, Path} from 'react-native-svg';
 
-interface IEyeOffIconProps {
-  size?: number;
-  color?: string;
-}
+import {IIconBase} from '@types';
 
-export const EyeOffIcon = ({color = 'black', size = 20}: IEyeOffIconProps) => (
+export const EyeOffIcon = ({color = 'black', size = 20}: IIconBase) => (
   <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
     <Path
       fillRule="evenodd"
