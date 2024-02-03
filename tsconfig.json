@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
-      "@screens": ["src/screens"],
+      "@screens/*": ["src/screens/*"],
       "@theme": ["src/theme"],
       "@types": ["src/types"],
       "@components/*": ["src/components/*"],
