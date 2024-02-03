@@ -13,9 +13,10 @@ import {useAppTheme} from '@hooks/useAppTheme';
 
 interface ITextInputProps extends TextInputProps {
   label: string;
+  errorMessage?: string;
 }
 
-export const TextInput = ({label, ...rest}: ITextInputProps) => {
+export const TextInput = ({label, errorMessage, ...rest}: ITextInputProps) => {
   const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
 
@@ -29,7 +30,7 @@ export const TextInput = ({label, ...rest}: ITextInputProps) => {
         <Text preset="paragraphMedium" mb="s4">
           {label}
         </Text>
-        <Box {...$textInputContainer}>
+        <Box {...$textInputContainer(errorMessage)}>
           <RNTextInput
             ref={inputRef}
             placeholderTextColor={colors.gray2}
@@ -37,6 +38,12 @@ export const TextInput = ({label, ...rest}: ITextInputProps) => {
             {...rest}
           />
         </Box>
+
+        {errorMessage && (
+          <Text preset="paragraphSmall" bold color="error">
+            {errorMessage}
+          </Text>
+        )}
       </Box>
     </Pressable>
   );
@@ -48,9 +55,9 @@ const $textInputStyles: TextStyle = {
   ...$fontSizes.paragraphMedium,
 };
 
-const $textInputContainer: BoxProps = {
-  borderWidth: 1,
+const $textInputContainer = (hasError?: string): BoxProps => ({
+  borderWidth: hasError ? 2 : 1,
+  borderColor: hasError ? 'error' : 'gray4',
   padding: 's16',
-  borderColor: 'gray4',
   borderRadius: 's12',
-};
+});

@@ -30,6 +30,7 @@ const App = (): React.JSX.Element => (
         </Box>
         <Box>
           <TextInput
+            errorMessage="Senha inválida"
             label="Senha"
             placeholder="Digite sua senha"
             autoCapitalize="none"
