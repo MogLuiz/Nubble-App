@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
+  Pressable,
   TextInput as RNTextInput,
   TextInputProps,
   TextStyle,
@@ -8,7 +9,7 @@ import {
 import {Box, BoxProps} from '@components/Box';
 import {Text} from '@components/Text';
 import {$fontFamily, $fontSizes} from '@components/Text/utils';
-import {useAppTheme} from '@/hooks/useAppTheme';
+import {useAppTheme} from '@hooks/useAppTheme';
 
 interface ITextInputProps extends TextInputProps {
   label: string;
@@ -16,25 +17,32 @@ interface ITextInputProps extends TextInputProps {
 
 export const TextInput = ({label, ...rest}: ITextInputProps) => {
   const {colors} = useAppTheme();
+  const inputRef = useRef<RNTextInput>(null);
+
+  const handleInputFocus = () => {
+    inputRef.current?.focus();
+  };
 
   return (
-    <Box>
-      <Text preset="paragraphMedium" mb="s4">
-        {label}
-      </Text>
-      <Box {...$textInputContainer}>
-        <RNTextInput
-          placeholderTextColor={colors.gray2}
-          style={$textInputStyles}
-          {...rest}
-        />
+    <Pressable onPress={handleInputFocus}>
+      <Box>
+        <Text preset="paragraphMedium" mb="s4">
+          {label}
+        </Text>
+        <Box {...$textInputContainer}>
+          <RNTextInput
+            ref={inputRef}
+            placeholderTextColor={colors.gray2}
+            style={$textInputStyles}
+            {...rest}
+          />
+        </Box>
       </Box>
-    </Box>
+    </Pressable>
   );
 };
 
 const $textInputStyles: TextStyle = {
-  borderWidth: 1,
   padding: 0,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
