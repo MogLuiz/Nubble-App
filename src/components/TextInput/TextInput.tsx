@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import {
-  TextStyle,
   Pressable,
   TextInputProps,
   TextInput as RNTextInput,
@@ -10,7 +9,8 @@ import {useAppTheme} from '@hooks/useAppTheme';
 
 import {Text} from '@components/Text';
 import {Box, BoxProps} from '@components/Box';
-import {$fontFamily, $fontSizes} from '@components/Text/utils';
+
+import * as style from './styles';
 
 interface ITextInputProps extends TextInputProps {
   label: string;
@@ -39,11 +39,11 @@ export const TextInput = ({
         <Text preset="paragraphMedium" mb="s4">
           {label}
         </Text>
-        <Box {...$textInputContainer(errorMessage)}>
+        <Box {...style.textInputContainer(errorMessage)}>
           <RNTextInput
             ref={inputRef}
             placeholderTextColor={colors.gray2}
-            style={$textInputStyles}
+            style={style.textInput}
             {...rest}
           />
 
@@ -63,19 +63,3 @@ export const TextInput = ({
     </Box>
   );
 };
-
-const $textInputStyles: TextStyle = {
-  padding: 0,
-  fontFamily: $fontFamily.regular,
-  flexGrow: 1,
-  flexShrink: 1,
-  ...$fontSizes.paragraphMedium,
-};
-
-const $textInputContainer = (hasError?: string): BoxProps => ({
-  flexDirection: 'row',
-  borderWidth: hasError ? 2 : 1,
-  borderColor: hasError ? 'error' : 'gray4',
-  padding: 's16',
-  borderRadius: 's12',
-});
