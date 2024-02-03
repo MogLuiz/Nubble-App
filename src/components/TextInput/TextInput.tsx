@@ -1,26 +1,29 @@
 import React, {useRef} from 'react';
 import {
-  Pressable,
-  TextInput as RNTextInput,
-  TextInputProps,
   TextStyle,
+  Pressable,
+  TextInputProps,
+  TextInput as RNTextInput,
 } from 'react-native';
 
-import {Box, BoxProps} from '@components/Box';
-import {Text} from '@components/Text';
-import {$fontFamily, $fontSizes} from '@components/Text/utils';
 import {useAppTheme} from '@hooks/useAppTheme';
+
+import {Text} from '@components/Text';
+import {Box, BoxProps} from '@components/Box';
+import {$fontFamily, $fontSizes} from '@components/Text/utils';
 
 interface ITextInputProps extends TextInputProps {
   label: string;
   errorMessage?: string;
   RightComponent?: React.ReactElement;
+  containerStyles?: BoxProps;
 }
 
 export const TextInput = ({
   label,
   errorMessage,
   RightComponent,
+  containerStyles,
   ...rest
 }: ITextInputProps) => {
   const {colors} = useAppTheme();
@@ -31,8 +34,8 @@ export const TextInput = ({
   };
 
   return (
-    <Pressable onPress={handleInputFocus}>
-      <Box>
+    <Box {...containerStyles}>
+      <Pressable onPress={handleInputFocus}>
         <Text preset="paragraphMedium" mb="s4">
           {label}
         </Text>
@@ -56,8 +59,8 @@ export const TextInput = ({
             {errorMessage}
           </Text>
         )}
-      </Box>
-    </Pressable>
+      </Pressable>
+    </Box>
   );
 };
 

@@ -4,11 +4,10 @@ import {ThemeProvider} from '@shopify/restyle';
 
 import {theme} from '@theme';
 
-import {Box} from '@components/Box';
 import {Text} from '@components/Text';
+import {Icon} from '@components/Icon';
 import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
-import {Icon} from '@components/Icon';
 
 const App = (): React.JSX.Element => (
   <ThemeProvider theme={theme}>
@@ -21,22 +20,20 @@ const App = (): React.JSX.Element => (
           Digite seu e-mail e senha para entrar
         </Text>
 
-        <Box mb="s20">
-          <TextInput
-            label="E-mail"
-            placeholder="Digite seu e-mail"
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-        </Box>
-        <Box>
-          <TextInput
-            label="Senha"
-            placeholder="Digite sua senha"
-            autoCapitalize="none"
-            RightComponent={<Icon variant="eyeOn" color="gray2" />}
-          />
-        </Box>
+        <TextInput
+          label="E-mail"
+          placeholder="Digite seu e-mail"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          containerStyles={{mb: 's20'}}
+        />
+
+        <TextInput
+          label="Senha"
+          placeholder="Digite sua senha"
+          autoCapitalize="none"
+          RightComponent={<Icon variant="eyeOn" color="gray2" />}
+        />
 
         <Text mt="s10" preset="paragraphSmall" bold color="primary">
           Esqueci minha senha
