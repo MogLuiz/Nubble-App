@@ -8,6 +8,7 @@ import {Box} from '@components/Box';
 import {Text} from '@components/Text';
 import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
+import {Icon} from '@components/Icon';
 
 const App = (): React.JSX.Element => (
   <ThemeProvider theme={theme}>
@@ -30,10 +31,10 @@ const App = (): React.JSX.Element => (
         </Box>
         <Box>
           <TextInput
-            errorMessage="Senha inválida"
             label="Senha"
             placeholder="Digite sua senha"
             autoCapitalize="none"
+            RightComponent={<Icon variant="eyeOn" color="gray2" />}
           />
         </Box>
 
