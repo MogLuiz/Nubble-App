@@ -5,11 +5,13 @@ import {theme} from '@theme';
 import {ThemeProvider} from '@shopify/restyle';
 
 import {LoginScreen} from '@screens/auth/LoginScreen';
+import {SignUpScreen} from '@screens/auth/SignUpScreen';
 
 const App = (): React.JSX.Element => (
   <SafeAreaProvider>
     <ThemeProvider theme={theme}>
-      <LoginScreen />
+      {/* <LoginScreen /> */}
+      <SignUpScreen />
     </ThemeProvider>
   </SafeAreaProvider>
 );
