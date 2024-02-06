@@ -13,12 +13,14 @@ interface ILoginScreenProps {
 }
 
 export const Screen = ({children, canGoBack = false}: ILoginScreenProps) => {
-  const {topSpacing: paddingTop} = useAppSafeArea();
+  const {topSpacing, bottomSpacing} = useAppSafeArea();
 
   return (
     <KeyboardAvoidingView behavior={Platform.select({ios: 'padding'})}>
       <ScrollView>
-        <Box paddingHorizontal="s24" style={{paddingTop}}>
+        <Box
+          paddingHorizontal="s24"
+          style={{paddingTop: topSpacing, paddingBottom: bottomSpacing}}>
           {canGoBack && (
             <Box mb="s24" flexDirection="row" alignItems="center" gap="s8">
               <Icon variant="arrowLeft" color="primary" />
