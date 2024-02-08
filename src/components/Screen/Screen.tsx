@@ -6,7 +6,7 @@ import {Icon} from '@components/Icon';
 import {Text} from '@components/Text';
 import {Container} from './parts/Container';
 
-import {useAppTheme} from '@/hooks/useAppTheme';
+import {useAppTheme} from '@hooks/useAppTheme';
 import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
 interface ILoginScreenProps {
@@ -24,7 +24,9 @@ export const Screen = ({
   const {topSpacing, bottomSpacing} = useAppSafeArea();
 
   return (
-    <KeyboardAvoidingView behavior={Platform.select({ios: 'padding'})}>
+    <KeyboardAvoidingView
+      behavior={Platform.select({ios: 'padding'})}
+      style={{flex: 1}}>
       <Container scrollable={scrollable} backgroundColor={colors.background}>
         <Box
           paddingHorizontal="s24"

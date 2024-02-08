@@ -13,7 +13,7 @@ export const Container = ({
   backgroundColor,
 }: IContainerProps) => {
   return scrollable ? (
-    <ScrollView style={{backgroundColor}}>{children}</ScrollView>
+    <ScrollView style={{backgroundColor, flex: 1}}>{children}</ScrollView>
   ) : (
     <View style={{backgroundColor}}>{children}</View>
   );
