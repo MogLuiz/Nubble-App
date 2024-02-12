@@ -12,7 +12,7 @@ import {Box, BoxProps} from '@components/Box';
 
 import * as style from './styles';
 
-interface ITextInputProps extends TextInputProps {
+export interface ITextInputProps extends TextInputProps {
   label: string;
   errorMessage?: string;
   RightComponent?: React.ReactElement;
