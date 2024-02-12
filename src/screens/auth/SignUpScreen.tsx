@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {Text} from '@components/Text';
-import {Icon} from '@components/Icon';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
+import {PasswordInput} from '@components/PasswordInput';
 
 export const SignUpScreen = () => {
   const handleSubmitForm = () => {};
@@ -31,12 +31,10 @@ export const SignUpScreen = () => {
         containerStyles={{mb: 's20'}}
       />
 
-      <TextInput
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
-        autoCapitalize="none"
         containerStyles={{mb: 's48'}}
-        RightComponent={<Icon variant="eyeOn" color="gray2" />}
       />
 
       <Button onPress={handleSubmitForm} title="Criar uma conta" />

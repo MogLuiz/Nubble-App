@@ -10,8 +10,8 @@ import {SignUpScreen} from '@screens/auth/SignUpScreen';
 const App = (): React.JSX.Element => (
   <SafeAreaProvider>
     <ThemeProvider theme={theme}>
-      {/* <LoginScreen /> */}
-      <SignUpScreen />
+      <LoginScreen />
+      {/* <SignUpScreen /> */}
     </ThemeProvider>
   </SafeAreaProvider>
 );

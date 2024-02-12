@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {Text} from '@components/Text';
-import {Icon} from '@components/Icon';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
+import {PasswordInput} from '@components/PasswordInput';
 
 export const LoginScreen = () => (
   <Screen>
@@ -23,12 +23,7 @@ export const LoginScreen = () => (
       containerStyles={{mb: 's20'}}
     />
 
-    <TextInput
-      label="Senha"
-      placeholder="Digite sua senha"
-      autoCapitalize="none"
-      RightComponent={<Icon variant="eyeOn" color="gray2" />}
-    />
+    <PasswordInput label="Senha" placeholder="Digite sua senha" />
 
     <Text mt="s10" preset="paragraphSmall" bold color="primary">
       Esqueci minha senha
