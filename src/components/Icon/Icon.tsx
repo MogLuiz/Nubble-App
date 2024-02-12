@@ -1,4 +1,5 @@
 import React from 'react';
+import {Pressable} from 'react-native';
 
 import * as icons from '@assets/icons';
 
@@ -12,17 +13,32 @@ interface IIconProps {
   variant: IconVariants;
   color?: ThemeColors;
   size?: number;
+  onPress?: () => void;
 }
 
 export const Icon = ({
   variant,
   color = 'backgroundContrast',
   size,
+  onPress,
 }: IIconProps) => {
   const {colors} = useAppTheme();
   const IconComponent = iconsDictionary[variant];
 
-  return <IconComponent color={colors[color]} size={size} />;
+  const iconProps = {
+    color: colors[color],
+    size,
+  };
+
+  if (onPress) {
+    return (
+      <Pressable hitSlop={10} onPress={onPress}>
+        <IconComponent {...iconProps} />
+      </Pressable>
+    );
+  }
+
+  return <IconComponent {...iconProps} />;
 };
 
 const iconsDictionary = {
