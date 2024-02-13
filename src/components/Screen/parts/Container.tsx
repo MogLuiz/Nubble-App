@@ -12,13 +12,16 @@ export const Container = ({
   scrollable,
   backgroundColor,
 }: IContainerProps) => {
+  const styles = {
+    backgroundColor,
+    flex: 1,
+  };
+
   return scrollable ? (
-    <ScrollView
-      keyboardShouldPersistTaps="handled"
-      style={{backgroundColor, flex: 1}}>
+    <ScrollView keyboardShouldPersistTaps="handled" style={styles}>
       {children}
     </ScrollView>
   ) : (
-    <View style={{backgroundColor}}>{children}</View>
+    <View style={styles}>{children}</View>
   );
 };
