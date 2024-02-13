@@ -6,8 +6,12 @@ import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
 
-export const SignUpScreen = () => {
-  const handleSubmitForm = () => {};
+import {ScreenParams} from '@types';
+
+export const SignUpScreen = ({navigation}: ScreenParams<'SignUpScreen'>) => {
+  const handleSubmitForm = () => {
+    navigation.navigate('SuccessScreen');
+  };
 
   return (
     <Screen canGoBack scrollable>
