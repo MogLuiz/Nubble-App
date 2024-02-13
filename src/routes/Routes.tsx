@@ -6,7 +6,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from '@screens/auth/LoginScreen';
 import {SignUpScreen} from '@screens/auth/SignUpScreen';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParams = {
+  LoginScreen: undefined;
+  SignUpScreen: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParams>();
 
 export const Router = () => (
   <NavigationContainer>
