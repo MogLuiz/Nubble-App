@@ -5,9 +5,11 @@ import {Box} from '@components/Box';
 import {Icon} from '@components/Icon';
 import {Text} from '@components/Text';
 import {Container} from './parts/Container';
+import {TouchableOpacityBox} from '@components/TouchableOpacityBox';
 
 import {useAppTheme} from '@hooks/useAppTheme';
 import {useAppSafeArea} from '@hooks/useAppSafeArea';
+import {useNavigation} from '@react-navigation/native';
 
 interface ILoginScreenProps {
   children?: React.ReactNode;
@@ -21,6 +23,7 @@ export const Screen = ({
   scrollable = false,
 }: ILoginScreenProps) => {
   const {colors} = useAppTheme();
+  const navigation = useNavigation();
   const {topSpacing, bottomSpacing} = useAppSafeArea();
 
   return (
@@ -32,12 +35,17 @@ export const Screen = ({
           paddingHorizontal="s24"
           style={{paddingTop: topSpacing, paddingBottom: bottomSpacing}}>
           {canGoBack && (
-            <Box mb="s24" flexDirection="row" alignItems="center" gap="s8">
+            <TouchableOpacityBox
+              onPress={navigation.goBack}
+              mb="s24"
+              flexDirection="row"
+              alignItems="center"
+              gap="s8">
               <Icon variant="arrowLeft" color="primary" />
               <Text preset="paragraphMedium" semiBold>
                 Voltar
               </Text>
-            </Box>
+            </TouchableOpacityBox>
           )}
 
           {children}

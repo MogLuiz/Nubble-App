@@ -6,30 +6,41 @@ import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
 
-export const LoginScreen = () => (
-  <Screen>
-    <Text preset="headingLarge" mb="s8">
-      Olá
-    </Text>
-    <Text preset="paragraphLarge" mb="s40">
-      Digite seu e-mail e senha para entrar
-    </Text>
+export const LoginScreen = ({navigation}) => {
+  const handleNavigateToSignUpScreen = () => {
+    navigation.navigate('SignUpScreen');
+  };
 
-    <TextInput
-      label="E-mail"
-      placeholder="Digite seu e-mail"
-      keyboardType="email-address"
-      autoCapitalize="none"
-      containerStyles={{mb: 's20'}}
-    />
+  return (
+    <Screen scrollable>
+      <Text preset="headingLarge" mb="s8">
+        Olá
+      </Text>
+      <Text preset="paragraphLarge" mb="s40">
+        Digite seu e-mail e senha para entrar
+      </Text>
 
-    <PasswordInput label="Senha" placeholder="Digite sua senha" />
+      <TextInput
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        containerStyles={{mb: 's20'}}
+      />
 
-    <Text mt="s10" preset="paragraphSmall" bold color="primary">
-      Esqueci minha senha
-    </Text>
+      <PasswordInput label="Senha" placeholder="Digite sua senha" />
 
-    <Button mt="s48" title="Entrar" />
-    <Button mt="s12" preset="outline" title="Criar uma conta" />
-  </Screen>
-);
+      <Text mt="s10" preset="paragraphSmall" bold color="primary">
+        Esqueci minha senha
+      </Text>
+
+      <Button mt="s48" title="Entrar" />
+      <Button
+        mt="s12"
+        preset="outline"
+        title="Criar uma conta"
+        onPress={handleNavigateToSignUpScreen}
+      />
+    </Screen>
+  );
+};
