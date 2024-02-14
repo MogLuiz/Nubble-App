@@ -9,7 +9,7 @@ import {useAppTheme} from '@hooks/useAppTheme';
 
 type IconVariants = keyof typeof iconsDictionary;
 
-interface IIconProps {
+export interface IIconProps {
   variant: IconVariants;
   color?: ThemeColors;
   size?: number;

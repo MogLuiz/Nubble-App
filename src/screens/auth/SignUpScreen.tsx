@@ -10,7 +10,14 @@ import {ScreenParams} from '@types';
 
 export const SignUpScreen = ({navigation}: ScreenParams<'SignUpScreen'>) => {
   const handleSubmitForm = () => {
-    navigation.navigate('SuccessScreen');
+    navigation.navigate('SuccessScreen', {
+      title: 'Sua conta foi criada com sucesso!',
+      description: 'Agora é só fazer login na nossa plataforma',
+      icon: {
+        variant: 'checkRoundIcon',
+        color: 'success',
+      },
+    });
   };
 
   return (

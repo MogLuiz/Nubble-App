@@ -8,18 +8,20 @@ import {Screen} from '@components/Screen/Screen';
 import {ScreenParams} from '@types';
 
 export function SuccessScreen({route}: ScreenParams<'SuccessScreen'>) {
+  const {title, description, icon} = route.params;
+
   function goBackToBegin() {
     // TODO: navegar para a tela de login
   }
 
   return (
     <Screen>
-      <Icon variant="bellOn" />
+      <Icon {...icon} />
       <Text preset="headingLarge" mt="s24">
-        Title
+        {title}
       </Text>
       <Text preset="paragraphLarge" mt="s16">
-        Description
+        {description}
       </Text>
       <Button onPress={goBackToBegin} title="Voltar ao início" mt="s40" />
     </Screen>
