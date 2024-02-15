@@ -13,6 +13,10 @@ export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
     navigation.navigate('SignUpScreen');
   };
 
+  const handleNavigateToForgotPasswordScreen = () => {
+    navigation.navigate('ForgotPasswordScreen');
+  };
+
   return (
     <Screen scrollable>
       <Text preset="headingLarge" mb="s8">
@@ -32,7 +36,12 @@ export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
 
       <PasswordInput label="Senha" placeholder="Digite sua senha" />
 
-      <Text mt="s10" preset="paragraphSmall" bold color="primary">
+      <Text
+        mt="s10"
+        preset="paragraphSmall"
+        bold
+        color="primary"
+        onPress={handleNavigateToForgotPasswordScreen}>
         Esqueci minha senha
       </Text>
 
