@@ -7,12 +7,13 @@ import {Screen} from '@components/Screen/Screen';
 
 import {ScreenParams} from '@types';
 
-export function SuccessScreen({route}: ScreenParams<'SuccessScreen'>) {
+export function SuccessScreen({
+  route,
+  navigation,
+}: ScreenParams<'SuccessScreen'>) {
   const {title, description, icon} = route.params;
 
-  function goBackToBegin() {
-    // TODO: navegar para a tela de login
-  }
+  const handleGoBackToBegin = () => navigation.goBack();
 
   return (
     <Screen>
@@ -23,7 +24,7 @@ export function SuccessScreen({route}: ScreenParams<'SuccessScreen'>) {
       <Text preset="paragraphLarge" mt="s16">
         {description}
       </Text>
-      <Button onPress={goBackToBegin} title="Voltar ao início" mt="s40" />
+      <Button onPress={handleGoBackToBegin} title="Voltar ao início" mt="s40" />
     </Screen>
   );
 }

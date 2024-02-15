@@ -5,15 +5,14 @@ import {Button} from '@components/Button/Button';
 import {Screen} from '@components/Screen/Screen';
 import {TextInput} from '@components/TextInput/TextInput';
 
-import {ScreenParams} from '@types';
+import {useResetSucessScreenNavigation} from '@hooks/useResetSucessScreenNavigation';
 
-export function ForgotPasswordScreen({
-  navigation,
-}: ScreenParams<'ForgotPasswordScreen'>) {
-  function submitForm() {
-    // TODO: submit form
-    navigation.navigate('SuccessScreen', {
-      title: `Enviamos as instruções para seu  ${'\n'}e-mail`,
+export function ForgotPasswordScreen() {
+  const {reset} = useResetSucessScreenNavigation();
+
+  const handleSubmitForm = () => {
+    reset({
+      title: 'Enviamos as instruções para seu email',
       description:
         'Clique no link enviado no seu e-mail para recuperar sua senha',
       icon: {
@@ -21,7 +20,7 @@ export function ForgotPasswordScreen({
         color: 'primary',
       },
     });
-  }
+  };
 
   return (
     <Screen canGoBack>
@@ -36,7 +35,7 @@ export function ForgotPasswordScreen({
         placeholder="Digite seu e-mail"
         containerStyles={{mb: 's40'}}
       />
-      <Button onPress={submitForm} title="Recuperar senha" />
+      <Button onPress={handleSubmitForm} title="Recuperar senha" />
     </Screen>
   );
 }
