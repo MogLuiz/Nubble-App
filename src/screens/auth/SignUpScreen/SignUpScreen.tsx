@@ -6,7 +6,7 @@ import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
 
-import {useResetNavigation} from '@/hooks/useResetNavigation';
+import {useResetNavigation} from '@hooks/useResetNavigation';
 
 export const SignUpScreen = () => {
   const {resetSuccessScreen} = useResetNavigation();

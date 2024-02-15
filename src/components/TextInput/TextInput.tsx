@@ -42,6 +42,7 @@ export const TextInput = ({
         <Box {...style.textInputContainer(errorMessage)}>
           <RNTextInput
             ref={inputRef}
+            autoCapitalize="none"
             placeholderTextColor={colors.gray2}
             style={style.textInput}
             {...rest}

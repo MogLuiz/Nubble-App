@@ -5,7 +5,7 @@ import {Button} from '@components/Button/Button';
 import {Screen} from '@components/Screen/Screen';
 import {TextInput} from '@components/TextInput/TextInput';
 
-import {useResetNavigation} from '@/hooks/useResetNavigation';
+import {useResetNavigation} from '@hooks/useResetNavigation';
 
 export function ForgotPasswordScreen() {
   const {resetSuccessScreen} = useResetNavigation();
