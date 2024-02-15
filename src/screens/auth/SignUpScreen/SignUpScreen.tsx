@@ -6,13 +6,13 @@ import {Button} from '@components/Button';
 import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
 
-import {useResetSucessScreenNavigation} from '@hooks/useResetSucessScreenNavigation';
+import {useResetNavigation} from '@/hooks/useResetNavigation';
 
 export const SignUpScreen = () => {
-  const {reset} = useResetSucessScreenNavigation();
+  const {resetSuccessScreen} = useResetNavigation();
 
   const handleSubmitForm = () => {
-    reset({
+    resetSuccessScreen({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
       icon: {

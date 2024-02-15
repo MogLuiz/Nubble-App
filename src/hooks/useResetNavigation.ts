@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '@routes';
 
-export function useResetSucessScreenNavigation() {
+export function useResetNavigation() {
   const navigation = useNavigation();
 
-  function reset(params: RootStackParams['SuccessScreen']) {
+  const resetSuccessScreen = (params: RootStackParams['SuccessScreen']) => {
     navigation.reset({
       index: 1,
       routes: [
@@ -17,7 +17,7 @@ export function useResetSucessScreenNavigation() {
         },
       ],
     });
-  }
+  };
 
-  return {reset};
+  return {resetSuccessScreen};
 }

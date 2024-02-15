@@ -5,13 +5,13 @@ import {Button} from '@components/Button/Button';
 import {Screen} from '@components/Screen/Screen';
 import {TextInput} from '@components/TextInput/TextInput';
 
-import {useResetSucessScreenNavigation} from '@hooks/useResetSucessScreenNavigation';
+import {useResetNavigation} from '@/hooks/useResetNavigation';
 
 export function ForgotPasswordScreen() {
-  const {reset} = useResetSucessScreenNavigation();
+  const {resetSuccessScreen} = useResetNavigation();
 
   const handleSubmitForm = () => {
-    reset({
+    resetSuccessScreen({
       title: 'Enviamos as instruções para seu email',
       description:
         'Clique no link enviado no seu e-mail para recuperar sua senha',
