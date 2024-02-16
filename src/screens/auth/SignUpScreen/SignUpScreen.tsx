@@ -5,8 +5,8 @@ import {useForm, Controller} from 'react-hook-form';
 import {Text} from '@components/Text';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
-import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
+import {FormTextInput, FormPasswordInput} from '@components/Form';
 
 import {useResetNavigation} from '@hooks/useResetNavigation';
 
@@ -48,65 +48,41 @@ export const SignUpScreen = () => {
         Criar uma conta
       </Text>
 
-      <Controller
-        control={control}
+      <FormTextInput
+        placeholder="@"
         name="username"
+        label="Seu username"
+        control={control}
         rules={{required: 'Username é obrigatório'}}
-        render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
-          <TextInput
-            label="Seu username"
-            placeholder="@"
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            errorMessage={error?.message}
-            containerStyles={{mb: 's20'}}
-          />
-        )}
+        containerStyles={{mb: 's20'}}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="fullName"
-        rules={{required: 'Nome é obrigatório'}}
-        render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
-          <TextInput
-            label="Nome Completo"
-            placeholder="Digite seu nome completo"
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            errorMessage={error?.message}
-            containerStyles={{mb: 's20'}}
-          />
-        )}
+        rules={{required: 'Nome obrigatório'}}
+        autoCapitalize="words"
+        label="Nome Completo"
+        placeholder="Digite seu nome completo"
+        containerStyles={{mb: 's20'}}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
-          required: 'E-mail é obrigatório',
+          required: 'E-mail obrigatório',
           pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'E-mail inválido',
           },
         }}
-        render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
-          <TextInput
-            label="E-mail"
-            placeholder="Digite seu e-mail"
-            keyboardType="email-address"
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            errorMessage={error?.message}
-            containerStyles={{mb: 's20'}}
-          />
-        )}
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        containerStyles={{mb: 's20'}}
       />
 
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
@@ -116,16 +92,9 @@ export const SignUpScreen = () => {
             message: 'Senha deve ter no mínimo 8 caracteres',
           },
         }}
-        render={({field, fieldState}) => (
-          <PasswordInput
-            errorMessage={fieldState.error?.message}
-            value={field.value}
-            onChangeText={field.onChange}
-            label="Senha"
-            placeholder="Digite sua senha"
-            containerStyles={{mb: 's48'}}
-          />
-        )}
+        label="Senha"
+        placeholder="Digite sua senha"
+        containerStyles={{mb: 's48'}}
       />
 
       <Button
