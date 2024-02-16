@@ -1,4 +1,5 @@
 import React from 'react';
+import {Alert} from 'react-native';
 
 import {useForm, Controller} from 'react-hook-form';
 
@@ -9,7 +10,6 @@ import {TextInput} from '@components/TextInput';
 import {PasswordInput} from '@components/PasswordInput';
 
 import {ScreenParams} from '@/types';
-import {Alert} from 'react-native';
 
 interface ILoginForm {
   email: string;
