@@ -1,11 +1,10 @@
 import React from 'react';
 
-import {useForm, Controller} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 
 import {Text} from '@components/Text';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
-import {PasswordInput} from '@components/PasswordInput';
 import {FormTextInput, FormPasswordInput} from '@components/Form';
 
 import {useResetNavigation} from '@hooks/useResetNavigation';
@@ -18,7 +17,7 @@ interface ISignUpForm {
 }
 
 export const SignUpScreen = () => {
-  const {control, handleSubmit, formState} = useForm<ISignUpForm>({
+  const {control, handleSubmit, formState, reset} = useForm<ISignUpForm>({
     defaultValues: {
       email: '',
       fullName: '',
@@ -31,15 +30,17 @@ export const SignUpScreen = () => {
   const {resetSuccessScreen} = useResetNavigation();
 
   const submitForm = (data: ISignUpForm) => {
-    // resetSuccessScreen({
-    //   title: 'Sua conta foi criada com sucesso!',
-    //   description: 'Agora é só fazer login na nossa plataforma',
-    //   icon: {
-    //     variant: 'checkRoundIcon',
-    //     color: 'success',
-    //   },
-    // });
+    resetSuccessScreen({
+      title: 'Sua conta foi criada com sucesso!',
+      description: 'Agora é só fazer login na nossa plataforma',
+      icon: {
+        variant: 'checkRoundIcon',
+        color: 'success',
+      },
+    });
+
     console.log({data});
+    reset();
   };
 
   return (
@@ -79,6 +80,7 @@ export const SignUpScreen = () => {
         }}
         label="E-mail"
         placeholder="Digite seu e-mail"
+        keyboardType="email-address"
         containerStyles={{mb: 's20'}}
       />
 
