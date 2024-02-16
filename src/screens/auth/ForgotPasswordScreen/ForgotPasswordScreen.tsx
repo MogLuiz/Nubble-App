@@ -1,16 +1,36 @@
 import React from 'react';
-
-import {Text} from '@components/Text/Text';
-import {TextInput} from '@components/TextInput';
-import {Button} from '@components/Button/Button';
-import {Screen} from '@components/Screen/Screen';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 import {useResetNavigation} from '@hooks/useResetNavigation';
 
+import {Text} from '@components/Text/Text';
+import {Button} from '@components/Button/Button';
+import {Screen} from '@components/Screen/Screen';
+import {FormTextInput} from '@components/Form';
+
+import {
+  forgotPasswordSchema,
+  ForgotPasswordSchema,
+} from './forgotPasswordSchema';
+
 export function ForgotPasswordScreen() {
+  const {
+    control,
+    handleSubmit,
+    formState,
+    reset: resetForm,
+  } = useForm<ForgotPasswordSchema>({
+    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: '',
+    },
+    mode: 'onChange',
+  });
+
   const {resetSuccessScreen} = useResetNavigation();
 
-  const handleSubmitForm = () => {
+  const submitForm = (data: ForgotPasswordSchema) => {
     resetSuccessScreen({
       title: 'Enviamos as instruções para seu email',
       description:
@@ -20,6 +40,9 @@ export function ForgotPasswordScreen() {
         color: 'primary',
       },
     });
+
+    console.log({data});
+    resetForm();
   };
 
   return (
@@ -30,12 +53,21 @@ export function ForgotPasswordScreen() {
       <Text preset="paragraphLarge" mb="s32">
         Digite seu e-mail e enviaremos as instruções para redefinição de senha
       </Text>
-      <TextInput
+
+      <FormTextInput
+        control={control}
+        name="email"
         label="E-mail"
         placeholder="Digite seu e-mail"
+        keyboardType="email-address"
         containerStyles={{mb: 's40'}}
       />
-      <Button onPress={handleSubmitForm} title="Recuperar senha" />
+
+      <Button
+        disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
+        title="Recuperar senha"
+      />
     </Screen>
   );
 }
