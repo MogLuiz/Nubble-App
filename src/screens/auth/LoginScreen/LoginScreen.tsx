@@ -1,5 +1,6 @@
 import React from 'react';
 import {Alert} from 'react-native';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 import {useForm} from 'react-hook-form';
 
@@ -8,15 +9,13 @@ import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 import {FormTextInput, FormPasswordInput} from '@components/Form';
 
+import {LoginSchema, loginSchema} from './loginSchema';
+
 import {ScreenParams} from '@/types';
 
-interface ILoginForm {
-  email: string;
-  password: string;
-}
-
 export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
-  const {control, handleSubmit, formState, reset} = useForm<ILoginForm>({
+  const {control, handleSubmit, formState, reset} = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -32,7 +31,7 @@ export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
     navigation.navigate('ForgotPasswordScreen');
   };
 
-  const submitForm = (data: ILoginForm) => {
+  const submitForm = (data: LoginSchema) => {
     Alert.alert('Formulário', JSON.stringify(data));
     reset();
   };
@@ -49,29 +48,15 @@ export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido',
-          },
-        }}
-        keyboardType="email-address"
         label="E-mail"
         placeholder="Digite seu e-mail"
+        keyboardType="email-address"
         containerStyles={{mb: 's20'}}
       />
 
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter no mínimo 8 caracteres',
-          },
-        }}
         label="Senha"
         placeholder="Digite sua senha"
         containerStyles={{mb: 's20'}}
