@@ -9,6 +9,7 @@
       "@theme": ["src/theme"],
       "@types": ["src/types"],
       "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@routes": ["src/routes"]
     }
