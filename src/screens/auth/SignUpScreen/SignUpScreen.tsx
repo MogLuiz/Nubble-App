@@ -1,23 +1,19 @@
 import React from 'react';
-
 import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
+
+import {useResetNavigation} from '@hooks/useResetNavigation';
 
 import {Text} from '@components/Text';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 import {FormTextInput, FormPasswordInput} from '@components/Form';
 
-import {useResetNavigation} from '@hooks/useResetNavigation';
-
-interface ISignUpForm {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-}
+import {signUpSchema, SignUpSchema} from './signUpSchema';
 
 export const SignUpScreen = () => {
-  const {control, handleSubmit, formState, reset} = useForm<ISignUpForm>({
+  const {control, handleSubmit, formState, reset} = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       email: '',
       fullName: '',
@@ -29,7 +25,7 @@ export const SignUpScreen = () => {
 
   const {resetSuccessScreen} = useResetNavigation();
 
-  const submitForm = (data: ISignUpForm) => {
+  const submitForm = (data: SignUpSchema) => {
     resetSuccessScreen({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
@@ -54,14 +50,12 @@ export const SignUpScreen = () => {
         name="username"
         label="Seu username"
         control={control}
-        rules={{required: 'Username é obrigatório'}}
         containerStyles={{mb: 's20'}}
       />
 
       <FormTextInput
         control={control}
         name="fullName"
-        rules={{required: 'Nome obrigatório'}}
         autoCapitalize="words"
         label="Nome Completo"
         placeholder="Digite seu nome completo"
@@ -71,13 +65,6 @@ export const SignUpScreen = () => {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido',
-          },
-        }}
         label="E-mail"
         placeholder="Digite seu e-mail"
         keyboardType="email-address"
@@ -87,13 +74,6 @@ export const SignUpScreen = () => {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter no mínimo 8 caracteres',
-          },
-        }}
         label="Senha"
         placeholder="Digite sua senha"
         containerStyles={{mb: 's48'}}
