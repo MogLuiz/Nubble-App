@@ -5,7 +5,7 @@ import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 
 export const SettingsScreen = () => (
-  <Screen>
+  <Screen canGoBack>
     <Text preset="headingSmall">SettingsScreen</Text>
     <Button title="Settings" />
   </Screen>

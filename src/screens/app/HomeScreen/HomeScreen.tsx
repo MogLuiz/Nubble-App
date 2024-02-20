@@ -4,9 +4,14 @@ import {Text} from '@components/Text';
 import {Screen} from '@components/Screen';
 import {Button} from '@components/Button';
 
-export const HomeScreen = () => (
+import {AppScreenParams} from '@types';
+
+export const HomeScreen = ({navigation}: AppScreenParams<'HomeScreen'>) => (
   <Screen>
-    <Text>HomeScreen</Text>
-    <Button title="Settings" />
+    <Text preset="headingLarge">HomeScreen</Text>
+    <Button
+      title="Settings"
+      onPress={() => navigation.navigate('SettingsScreen')}
+    />
   </Screen>
 );
