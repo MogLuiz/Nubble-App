@@ -11,9 +11,9 @@ import {FormTextInput, FormPasswordInput} from '@components/Form';
 
 import {LoginSchema, loginSchema} from './loginSchema';
 
-import {ScreenParams} from '@/types';
+import {AuthScreenParams} from '@/types';
 
-export const LoginScreen = ({navigation}: ScreenParams<'LoginScreen'>) => {
+export const LoginScreen = ({navigation}: AuthScreenParams<'LoginScreen'>) => {
   const {control, handleSubmit, formState, reset} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {

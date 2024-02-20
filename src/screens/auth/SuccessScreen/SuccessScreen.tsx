@@ -5,12 +5,12 @@ import {Icon} from '@components/Icon/Icon';
 import {Button} from '@components/Button/Button';
 import {Screen} from '@components/Screen/Screen';
 
-import {ScreenParams} from '@types';
+import {AuthScreenParams} from '@types';
 
 export function SuccessScreen({
   route,
   navigation,
-}: ScreenParams<'SuccessScreen'>) {
+}: AuthScreenParams<'SuccessScreen'>) {
   const {title, description, icon} = route.params;
 
   const handleGoBackToBegin = () => navigation.goBack();
