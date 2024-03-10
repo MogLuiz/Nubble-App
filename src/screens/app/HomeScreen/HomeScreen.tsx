@@ -13,5 +13,11 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => (
       title="Settings"
       onPress={() => navigation.navigate('SettingsScreen')}
     />
+
+    <Button
+      title="Favorite"
+      onPress={() => navigation.navigate('FavoriteScreen')}
+      mt="s14"
+    />
   </Screen>
 );

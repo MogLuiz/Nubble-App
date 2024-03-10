@@ -1,8 +1,9 @@
 import {AuthStackParams, AppStackParams} from '@routes';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {AppTabNavigatorStackParams} from '@/routes/AppTabNavigator';
+
 import {CompositeScreenProps} from '@react-navigation/native';
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {AppTabNavigatorStackParams} from '@/routes/AppTabNavigator';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type AuthScreenParams<T extends keyof AuthStackParams> =
   NativeStackScreenProps<AuthStackParams, T>;

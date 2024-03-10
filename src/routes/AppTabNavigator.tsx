@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -7,6 +8,7 @@ import {
   MyProfileScreen,
   NewPostScreen,
 } from '@screens/app';
+import {AppTabBar} from '@components/AppTabBar';
 
 export type AppTabNavigatorStackParams = {
   HomeScreen: undefined;
@@ -19,6 +21,7 @@ const Tab = createBottomTabNavigator<AppTabNavigatorStackParams>();
 
 export const AppTabNavigator = () => (
   <Tab.Navigator
+    tabBar={props => <AppTabBar {...props} />}
     screenOptions={{
       headerShown: false,
     }}>
