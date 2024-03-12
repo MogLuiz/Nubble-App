@@ -7,8 +7,8 @@ import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-import {Box, BoxProps} from '@components/Box';
 import {Icon} from '@components/Icon';
+import {Box, BoxProps} from '@components/Box';
 import {ITextProps, Text} from '@components/Text';
 import {
   TouchableOpacityBox,
@@ -63,6 +63,7 @@ export const AppTabBar = ({
           <TouchableOpacityBox
             {...$itemWrapper}
             accessibilityState={isFocused ? {selected: true} : {}}
+            key={route.key}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
