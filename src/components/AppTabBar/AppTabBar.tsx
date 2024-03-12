@@ -33,7 +33,6 @@ export const AppTabBar = ({
         });
 
         if (!isFocused && !event.defaultPrevented) {
-          // The `merge: true` option makes sure that the params inside the tab screen are preserved
           navigation.navigate({name: route.name, merge: true});
         }
       };

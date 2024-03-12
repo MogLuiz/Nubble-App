@@ -1,6 +1,8 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 
 import {
   HomeScreen,
@@ -19,15 +21,21 @@ export type AppTabNavigatorStackParams = {
 
 const Tab = createBottomTabNavigator<AppTabNavigatorStackParams>();
 
-export const AppTabNavigator = () => (
-  <Tab.Navigator
-    tabBar={props => <AppTabBar {...props} />}
-    screenOptions={{
-      headerShown: false,
-    }}>
-    <Tab.Screen name="HomeScreen" component={HomeScreen} />
-    <Tab.Screen name="NewPostScreen" component={NewPostScreen} />
-    <Tab.Screen name="FavoriteScreen" component={FavoriteScreen} />
-    <Tab.Screen name="MyProfileScreen" component={MyProfileScreen} />
-  </Tab.Navigator>
-);
+export const AppTabNavigator = () => {
+  const renderCustomAppTabBar = (props: BottomTabBarProps) => (
+    <AppTabBar {...props} />
+  );
+
+  return (
+    <Tab.Navigator
+      tabBar={renderCustomAppTabBar}
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="NewPostScreen" component={NewPostScreen} />
+      <Tab.Screen name="FavoriteScreen" component={FavoriteScreen} />
+      <Tab.Screen name="MyProfileScreen" component={MyProfileScreen} />
+    </Tab.Navigator>
+  );
+};
