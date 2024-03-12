@@ -1,16 +1,17 @@
 import {IIconProps} from '@components/Icon';
 import {AppTabNavigatorStackParams} from '@/routes/AppTabNavigator';
 
-export const mapScreenToProps: Record<
-  keyof AppTabNavigatorStackParams,
-  {
-    label: string;
-    icon: {
-      focused: IIconProps['variant'];
-      unfocused: IIconProps['variant'];
-    };
-  }
-> = {
+type IconVariants = IIconProps['variant'];
+type TabScreensKeys = keyof AppTabNavigatorStackParams;
+type MapperStructure = {
+  label: string;
+  icon: {
+    focused: IconVariants;
+    unfocused: IconVariants;
+  };
+};
+
+export const mapScreenToProps: Record<TabScreensKeys, MapperStructure> = {
   HomeScreen: {
     label: 'Início',
     icon: {
