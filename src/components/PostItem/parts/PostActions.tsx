@@ -3,9 +3,9 @@ import React from 'react';
 import {IPost} from '@domain/Post';
 
 import {Box} from '@components/Box';
-import {TouchableOpacityBox} from '@components/TouchableOpacityBox';
 import {Text} from '@components/Text';
 import {Icon, IIconProps} from '@components/Icon';
+import {TouchableOpacityBox} from '@components/TouchableOpacityBox';
 
 type PostActionsProps = Pick<
   IPost,
@@ -17,20 +17,21 @@ export const PostActions = ({
   commentCount,
   favoriteCount,
 }: PostActionsProps) => {
-  function likePost() {
+  const likePost = () => {
     //TODO: Implement like post
-  }
+  };
 
-  function navigateToComments() {
+  const navigateToComments = () => {
     //TODO: Implement navigate to comments
-  }
+  };
 
-  function favoritePost() {
+  const favoritePost = () => {
     // TODO: Implement favorite post
-  }
+  };
+
   return (
     <Box flexDirection="row" mt="s16">
-      <Item
+      <PostActionItem
         marked
         onPress={likePost}
         text={reactionCount}
@@ -39,7 +40,7 @@ export const PostActions = ({
           marked: 'heartFill',
         }}
       />
-      <Item
+      <PostActionItem
         marked={false}
         onPress={navigateToComments}
         text={commentCount}
@@ -48,7 +49,7 @@ export const PostActions = ({
           marked: 'comment',
         }}
       />
-      <Item
+      <PostActionItem
         marked={false}
         onPress={favoritePost}
         text={favoriteCount}
@@ -70,22 +71,21 @@ interface ItemProps {
     marked: IIconProps['variant'];
   };
 }
-function Item({onPress, icon, marked, text}: ItemProps) {
-  return (
-    <TouchableOpacityBox
-      flexDirection="row"
-      alignItems="center"
-      mr="s24"
-      onPress={onPress}>
-      <Icon
-        color={marked ? 'market' : undefined}
-        variant={marked ? icon.marked : icon.default}
-      />
-      {text > 0 && (
-        <Text preset="paragraphSmall" bold ml="s4">
-          {text}
-        </Text>
-      )}
-    </TouchableOpacityBox>
-  );
-}
+
+const PostActionItem = ({onPress, icon, marked, text}: ItemProps) => (
+  <TouchableOpacityBox
+    flexDirection="row"
+    alignItems="center"
+    mr="s24"
+    onPress={onPress}>
+    <Icon
+      color={marked ? 'market' : undefined}
+      variant={marked ? icon.marked : icon.default}
+    />
+    {text > 0 && (
+      <Text preset="paragraphSmall" bold ml="s4">
+        {text}
+      </Text>
+    )}
+  </TouchableOpacityBox>
+);
