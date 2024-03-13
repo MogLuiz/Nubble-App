@@ -15,6 +15,7 @@ module.exports = {
           '@hooks': './src/hooks',
           '@routes': './src/routes',
           '@utils': './src/utils',
+          '@domain': './src/domain',
         },
       },
     ],
