@@ -1,5 +1,4 @@
-import {IPost} from './types';
-import {postListMock} from './postMock';
+import {IPost, postListMock} from '.';
 
 const list = (): Promise<IPost[]> => {
   return new Promise(resolve => {

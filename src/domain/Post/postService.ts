@@ -1,5 +1,4 @@
-import {postApi} from './postApi';
-import {IPost} from './types';
+import {IPost, postApi} from '.';
 
 const list = async (): Promise<IPost[]> => {
   const postList = await postApi.list();
