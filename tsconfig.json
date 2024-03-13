@@ -12,7 +12,8 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@routes": ["src/routes"],
-      "@domain/*": ["src/domain/*"]
+      "@domain/*": ["src/domain/*"],
+      "@infra/*": ["src/infra/*"]
     }
   }
 }

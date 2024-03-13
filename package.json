@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "@shopify/restyle": "^2.4.2",
+    "@tanstack/react-query": "^5.27.5",
     "react": "18.2.0",
     "react-hook-form": "7.43.9",
     "react-native": "0.73.3",

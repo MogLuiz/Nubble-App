@@ -16,6 +16,7 @@ module.exports = {
           '@routes': './src/routes',
           '@utils': './src/utils',
           '@domain': './src/domain',
+          '@infra': './src/infra',
         },
       },
     ],
