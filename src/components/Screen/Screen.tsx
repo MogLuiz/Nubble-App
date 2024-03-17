@@ -1,7 +1,7 @@
 import React from 'react';
 import {KeyboardAvoidingView, Platform} from 'react-native';
 
-import {Box} from '@components/Box';
+import {Box, BoxProps} from '@components/Box';
 import {Icon} from '@components/Icon';
 import {Text} from '@components/Text';
 import {Container} from './parts/Container';
@@ -11,7 +11,7 @@ import {useAppTheme} from '@hooks/useAppTheme';
 import {useAppSafeArea} from '@hooks/useAppSafeArea';
 import {useNavigation} from '@react-navigation/native';
 
-interface ILoginScreenProps {
+interface ILoginScreenProps extends BoxProps {
   children?: React.ReactNode;
   canGoBack?: boolean;
   scrollable?: boolean;
@@ -21,6 +21,8 @@ export const Screen = ({
   children,
   canGoBack = false,
   scrollable = false,
+  style,
+  ...boxProps
 }: ILoginScreenProps) => {
   const {colors} = useAppTheme();
   const navigation = useNavigation();
@@ -33,7 +35,11 @@ export const Screen = ({
       <Container scrollable={scrollable} backgroundColor={colors.background}>
         <Box
           paddingHorizontal="s24"
-          style={{paddingTop: topSpacing, paddingBottom: bottomSpacing}}>
+          style={[
+            {paddingTop: topSpacing, paddingBottom: bottomSpacing},
+            style,
+          ]}
+          {...boxProps}>
           {canGoBack && (
             <TouchableOpacityBox
               onPress={navigation.goBack}

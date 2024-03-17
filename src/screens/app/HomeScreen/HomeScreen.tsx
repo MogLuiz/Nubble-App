@@ -1,4 +1,4 @@
-import {FlatList, ListRenderItemInfo} from 'react-native';
+import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 import {postService, IPost} from '@domain/Post';
@@ -20,7 +20,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
   );
 
   return (
-    <Screen>
+    <Screen style={$screen}>
       <FlatList
         data={postList}
         keyExtractor={item => item.id}
@@ -28,4 +28,10 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
       />
     </Screen>
   );
+};
+
+const $screen: StyleProp<ViewStyle> = {
+  paddingBottom: 0,
+  paddingHorizontal: 0,
+  paddingTop: 0,
 };
