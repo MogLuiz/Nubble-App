@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {SimpleLogo} from '../../../../brand/SimpleLogo';
+
 import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
 import {Icon} from '@components/Icon';
@@ -10,7 +12,8 @@ export const HomeHeader = () => {
 
   return (
     <Box {...$wrapper} style={{paddingTop: topSpacing}}>
-      <Box backgroundColor="carrotSecondary" height={16} width={70} />
+      <SimpleLogo width={70} />
+
       <Box flexDirection="row" gap="s24">
         <Box>
           <Icon variant="search" />
