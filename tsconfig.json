@@ -13,7 +13,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@routes": ["src/routes"],
       "@domain/*": ["src/domain/*"],
-      "@infra/*": ["src/infra/*"]
+      "@infra/*": ["src/infra/*"],
+      "@brand/*": ["src/brand/*"]
     }
   }
 }
