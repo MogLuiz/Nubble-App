@@ -5,9 +5,9 @@ import {IPost} from '@domain/Post';
 import {Box} from '@components/Box';
 import {Text} from '@components/Text';
 
-type Props = Pick<IPost, 'author' | 'text' | 'commentCount'>;
+type PostBottomProps = Pick<IPost, 'author' | 'text' | 'commentCount'>;
 
-export const PostBottom = ({author, text, commentCount}: Props) => {
+export const PostBottom = ({author, text, commentCount}: PostBottomProps) => {
   const commentText = getCommentText(commentCount);
 
   return (

@@ -5,6 +5,7 @@ import {postService, IPost} from '@domain/Post';
 
 import {Screen} from '@components/Screen';
 import {PostItem} from '@components/PostItem';
+import {HomeHeader} from './parts/HomeHeader';
 
 import {AppTabScreenParams} from '@types';
 
@@ -26,6 +27,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         keyExtractor={item => item.id}
         renderItem={renderPostItem}
         showsVerticalScrollIndicator={false}
+        ListHeaderComponent={<HomeHeader />}
       />
     </Screen>
   );
