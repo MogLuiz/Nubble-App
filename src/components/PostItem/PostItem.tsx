@@ -6,12 +6,13 @@ import {Box} from '@components/Box';
 import {PostImage} from './parts/PostImage';
 import {PostHeader} from './parts/PostHeader';
 import {PostActions} from './parts/PostActions';
+import {PostBottom} from './parts/PostBottom';
 
 interface IPostItemProps {
   post: IPost;
 }
 export const PostItem = ({
-  post: {author, imageURL, commentCount, favoriteCount, reactionCount},
+  post: {author, imageURL, commentCount, favoriteCount, reactionCount, text},
 }: IPostItemProps) => (
   <Box paddingHorizontal="s24" marginBottom="s24">
     <PostHeader author={author} />
@@ -21,5 +22,6 @@ export const PostItem = ({
       favoriteCount={favoriteCount}
       reactionCount={reactionCount}
     />
+    <PostBottom author={author} text={text} commentCount={commentCount} />
   </Box>
 );
