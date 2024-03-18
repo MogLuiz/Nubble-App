@@ -13,7 +13,7 @@ interface IPostItemProps {
 export const PostItem = ({
   post: {author, imageURL, commentCount, favoriteCount, reactionCount},
 }: IPostItemProps) => (
-  <Box marginBottom="s24">
+  <Box paddingHorizontal="s24" marginBottom="s24">
     <PostHeader author={author} />
     <PostImage imageURL={imageURL} />
     <PostActions

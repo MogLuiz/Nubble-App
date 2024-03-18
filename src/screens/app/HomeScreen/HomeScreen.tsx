@@ -1,5 +1,5 @@
-import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 
 import {postService, IPost} from '@domain/Post';
 
@@ -25,6 +25,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderPostItem}
+        showsVerticalScrollIndicator={false}
       />
     </Screen>
   );
