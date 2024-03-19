@@ -1,7 +1,7 @@
-import {IPost} from '.';
-import {postListMock} from './postMock';
+import { PostAPI } from '.';
+import { PaginatedResponseAPI } from '@api';
 
-const list = async (): Promise<IPost[]> => {
+const list = async (): Promise<PaginatedResponseAPI<PostAPI>> => {
   let response = await fetch('http://localhost:3333/user/post', {
     method: 'GET',
     headers: {
@@ -10,10 +10,8 @@ const list = async (): Promise<IPost[]> => {
     },
   });
 
-  let data = await response.json();
-  console.log('FETCH DATA:', data);
-
-  return postListMock;
+  let data: PaginatedResponseAPI<PostAPI> = await response.json();
+  return data;
 };
 
 export const postApi = {

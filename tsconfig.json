@@ -14,7 +14,8 @@
       "@routes": ["src/routes"],
       "@domain/*": ["src/domain/*"],
       "@infra/*": ["src/infra/*"],
-      "@brand/*": ["src/brand/*"]
+      "@brand/*": ["src/brand/*"],
+      "@api": ["src/api"],
     }
   }
 }
