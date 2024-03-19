@@ -1,12 +1,12 @@
 import React from 'react';
 import {Image} from 'react-native';
 
-import {IPost} from '@domain/Post';
+import {Post} from '@domain/Post';
 
 import {Box} from '@components/Box';
 import {Text} from '@components/Text';
 
-type PostHeaderProps = Pick<IPost, 'author'>;
+type PostHeaderProps = Pick<Post, 'author'>;
 
 export const PostHeader = ({
   author: {profileURL, userName},

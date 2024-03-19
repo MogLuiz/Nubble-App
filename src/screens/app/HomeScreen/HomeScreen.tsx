@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 
-import {postService, IPost} from '@domain/Post';
+import {postService, Post} from '@domain/Post';
 
 import {Screen} from '@components/Screen';
 import {PostItem} from '@components/PostItem';
@@ -10,13 +10,13 @@ import {HomeHeader} from './parts/HomeHeader';
 import {AppTabScreenParams} from '@types';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
-  const [postList, setPostList] = useState<IPost[]>([]);
+  const [postList, setPostList] = useState<Post[]>([]);
 
   useEffect(() => {
     postService.list().then(posts => setPostList(posts));
   }, []);
 
-  const renderPostItem = ({item}: ListRenderItemInfo<IPost>) => (
+  const renderPostItem = ({item}: ListRenderItemInfo<Post>) => (
     <PostItem post={item} />
   );
 

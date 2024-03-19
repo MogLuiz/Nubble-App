@@ -1,9 +1,9 @@
 import React from 'react';
 import {Dimensions, Image} from 'react-native';
 
-import {IPost} from '@domain/Post';
+import {Post} from '@domain/Post';
 
-type PostImageProps = Pick<IPost, 'imageURL'>;
+type PostImageProps = Pick<Post, 'imageURL'>;
 
 export function PostImage({imageURL}: PostImageProps) {
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {IPost} from '@domain/Post';
+import {Post} from '@domain/Post';
 
 import {Box} from '@components/Box';
 import {Text} from '@components/Text';
 
-type PostBottomProps = Pick<IPost, 'author' | 'text' | 'commentCount'>;
+type PostBottomProps = Pick<Post, 'author' | 'text' | 'commentCount'>;
 
 export const PostBottom = ({author, text, commentCount}: PostBottomProps) => {
   const commentText = getCommentText(commentCount);

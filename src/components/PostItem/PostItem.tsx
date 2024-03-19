@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {IPost} from '@domain/Post';
+import {Post} from '@domain/Post';
 
 import {Box} from '@components/Box';
 import {PostImage} from './parts/PostImage';
@@ -9,7 +9,7 @@ import {PostActions} from './parts/PostActions';
 import {PostBottom} from './parts/PostBottom';
 
 interface IPostItemProps {
-  post: IPost;
+  post: Post;
 }
 export const PostItem = ({
   post: {author, imageURL, commentCount, favoriteCount, reactionCount, text},

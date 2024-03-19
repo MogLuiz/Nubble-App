@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {IPost} from '@domain/Post';
+import {Post} from '@domain/Post';
 
 import {Box} from '@components/Box';
 import {Text} from '@components/Text';
@@ -8,7 +8,7 @@ import {Icon, IIconProps} from '@components/Icon';
 import {TouchableOpacityBox} from '@components/TouchableOpacityBox';
 
 type PostActionsProps = Pick<
-  IPost,
+  Post,
   'reactionCount' | 'commentCount' | 'favoriteCount'
 >;
 
