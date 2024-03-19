@@ -1,14 +1,15 @@
 import React from 'react';
 
 import {Svg, Path} from 'react-native-svg';
-
 import {useAppTheme} from '@hooks/useAppTheme';
 
 interface ISimpleLogoProps {
   width?: number;
 }
 
-export function SimpleLogo({width = 105}: ISimpleLogoProps) {
+export const SimpleLogo = ({
+  width = 105,
+}: ISimpleLogoProps): React.JSX.Element => {
   const {colors} = useAppTheme();
   const backgroundColor = colors.backgroundContrast;
 
@@ -48,4 +49,4 @@ export function SimpleLogo({width = 105}: ISimpleLogoProps) {
       />
     </Svg>
   );
-}
+};

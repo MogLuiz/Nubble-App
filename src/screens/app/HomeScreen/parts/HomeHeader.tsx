@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {SimpleLogo} from '../../../../brand/SimpleLogo';
+import {SimpleLogo} from '@brand/SimpleLogo';
 
 import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
