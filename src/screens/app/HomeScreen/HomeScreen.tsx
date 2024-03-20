@@ -1,7 +1,8 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React from 'react';
 import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 
-import {postService, Post} from '@domain/Post';
+import {Post} from '@domain/Post';
+import { usePostList } from '@domain/Post/useCases/usePostList';
 
 import {Screen} from '@components/Screen';
 import {PostItem} from '@components/PostItem';
@@ -11,27 +12,7 @@ import {HomeEmpty} from './components/HomeEmpty'
 import {AppTabScreenParams} from '@types';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
-  const [postList, setPostList] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean | null>(null);
-
-  const fetchData = useCallback(async () => {
-    try {
-      setError(null);
-      setLoading(true);
-      const list = await postService.list();
-      setPostList(list);
-    } catch (er) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-  
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const {error, loading, postList, refetch} = usePostList()
 
   const renderPostItem = ({item}: ListRenderItemInfo<Post>) => (
     <PostItem post={item} />
@@ -46,7 +27,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={<HomeHeader />}
         contentContainerStyle={{flex: postList.length ? undefined : 1 }}
-        ListEmptyComponent={<HomeEmpty loading={loading} error={error} refetch={fetchData} />}
+        ListEmptyComponent={<HomeEmpty loading={loading} error={error} refetch={refetch} />}
       />
     </Screen>
   );

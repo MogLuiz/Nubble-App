@@ -4,8 +4,6 @@ import { postAdapter } from './postAdapter';
 
 const list = async (): Promise<Post[]> => {
   const postPageAPI = await postApi.list();
-
-
   // throw new Error('Erro de teste');
   // return [];
 
