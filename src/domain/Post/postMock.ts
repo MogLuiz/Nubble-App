@@ -1,6 +1,6 @@
-import {IPost} from '.';
+import { Post } from '.';
 
-export const postListMock: IPost[] = [
+export const postListMock: Post[] = [
   {
     id: 'post_1',
     text: 'This is my first post!',
