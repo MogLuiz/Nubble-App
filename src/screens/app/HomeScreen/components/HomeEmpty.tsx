@@ -15,10 +15,10 @@ export const HomeEmpty = ({loading, error, refetch}: HomeEmptyProps) => {
     <Text bold preset="paragraphMedium">
       Não há publicações no seu feed
     </Text>
-  );
+  )
 
   if (loading) {
-    component = <ActivityIndicator color="primary" />;
+    component = <ActivityIndicator color="primary" />
   }
 
   if (error) {
@@ -29,12 +29,12 @@ export const HomeEmpty = ({loading, error, refetch}: HomeEmptyProps) => {
         </Text>
         <Button title="recarregar" preset="outline" onPress={refetch} />
       </>
-    );
+    )
   }
 
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
       {component}
     </Box>
-  );
+  )
 }

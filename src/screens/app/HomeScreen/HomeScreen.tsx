@@ -45,6 +45,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         renderItem={renderPostItem}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={<HomeHeader />}
+        contentContainerStyle={{flex: postList.length ? undefined : 1 }}
         ListEmptyComponent={<HomeEmpty loading={loading} error={error} refetch={fetchData} />}
       />
     </Screen>
@@ -55,4 +56,5 @@ const $screen: StyleProp<ViewStyle> = {
   paddingBottom: 0,
   paddingHorizontal: 0,
   paddingTop: 0,
+  flex: 1,
 };
