@@ -9,5 +9,5 @@ const list = async (): Promise<Post[]> => {
 };
 
 export const postService = {
-  list,
+  list
 };
