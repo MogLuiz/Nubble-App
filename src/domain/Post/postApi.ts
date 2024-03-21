@@ -1,9 +1,8 @@
 import { PostAPI } from '.';
-import { api, PaginatedResponseAPI } from '@api';
+import { api, PaginatedResponseAPI, PaginationParams } from '@api';
 
-const list = async () => {
-  await new Promise(resolve => setTimeout(() => resolve(''), 2000));
-  const { data } = await api.get<PaginatedResponseAPI<PostAPI>>('/user/post');
+const list = async (params?: PaginationParams) => {
+  const { data } = await api.get<PaginatedResponseAPI<PostAPI>>('/user/post', { params });
 
   return data;
 };

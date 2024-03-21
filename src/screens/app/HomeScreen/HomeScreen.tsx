@@ -12,7 +12,7 @@ import {HomeEmpty} from './components/HomeEmpty'
 import {AppTabScreenParams} from '@types';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
-  const {error, loading, postList, refetch} = usePostList()
+  const {error, loading, postList, refetch, fetchNextPage} = usePostList()
 
   const renderPostItem = ({item}: ListRenderItemInfo<Post>) => (
     <PostItem post={item} />
@@ -24,6 +24,8 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderPostItem}
+        onEndReached={fetchNextPage}
+        onEndReachedThreshold={0.1}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={<HomeHeader />}
         contentContainerStyle={{flex: postList.length ? undefined : 1 }}

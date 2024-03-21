@@ -18,3 +18,8 @@ export interface PaginatedResponseAPI<T> {
   data: T[];
   meta: MetaDataPaginationAPI;
 }
+
+export interface PaginationParams {
+  page?: number;
+  per_page?: number;
+}
