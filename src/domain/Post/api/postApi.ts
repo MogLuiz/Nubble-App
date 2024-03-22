@@ -1,4 +1,4 @@
-import { PostAPI } from '.';
+import { PostAPI } from '@domain/Post/types';
 import { api, PaginatedResponseAPI, PaginationParams } from '@api';
 
 const list = async (params?: PaginationParams) => {
