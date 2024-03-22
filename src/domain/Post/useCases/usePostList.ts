@@ -13,6 +13,7 @@ interface UsePostListResponse {
 export const usePostList = (): UsePostListResponse => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [hasNextPage, setHasNextPage] = useState(true);
   const [postList, setPostList] = useState<Post[]>([]);
   const [error, setError] = useState<boolean | null>(null);
 
@@ -20,10 +21,14 @@ export const usePostList = (): UsePostListResponse => {
     try {
       setError(null);
       setLoading(true);
-      const list = await postService.list(1);
-      setPostList(list);
-      //TODO: validar se tem mais páginas
-      setPage(2);
+      const { data, meta } = await postService.list(1);
+      setPostList(data);
+      if (meta.hasNextPage) {
+        setPage(2);
+        setHasNextPage(true);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (er) {
       setError(true);
     } finally {
@@ -32,13 +37,17 @@ export const usePostList = (): UsePostListResponse => {
   }
 
   async function fetchNextPage() {
-    if (loading) return
+    if (loading || !hasNextPage) return
 
     try {
       setLoading(true);
-      const list = await postService.list(page);
-      setPostList(prev => [...prev, ...list]);
-      setPage(prev => prev + 1);
+      const { data, meta } = await postService.list(page);
+      setPostList(prev => [...prev, ...data]);
+      if (meta.hasNextPage) {
+        setPage(prev => prev + 1);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (er) {
       setError(true);
     } finally {
