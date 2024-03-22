@@ -7,7 +7,7 @@ interface UsePostListResponse {
   error: boolean | null;
   loading: boolean;
   fetchNextPage: () => void;
-  refetch: () => Promise<void>;
+  refresh: () => Promise<void>;
 }
 
 export const usePostList = (): UsePostListResponse => {
@@ -16,9 +16,25 @@ export const usePostList = (): UsePostListResponse => {
   const [postList, setPostList] = useState<Post[]>([]);
   const [error, setError] = useState<boolean | null>(null);
 
-  async function fetchData() {
+  async function fetchInitialData() {
     try {
       setError(null);
+      setLoading(true);
+      const list = await postService.list(1);
+      setPostList(list);
+      //TODO: validar se tem mais páginas
+      setPage(2);
+    } catch (er) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function fetchNextPage() {
+    if (loading) return
+
+    try {
       setLoading(true);
       const list = await postService.list(page);
       setPostList(prev => [...prev, ...list]);
@@ -30,21 +46,15 @@ export const usePostList = (): UsePostListResponse => {
     }
   }
 
-  const fetchNextPage = () => {
-    if (!loading) {
-      fetchData();
-    }
-  }
-
   useEffect(() => {
-    fetchData();
+    fetchInitialData();
   }, []);
 
   return {
     postList,
     error,
     loading,
-    refetch: fetchData,
+    refresh: fetchInitialData,
     fetchNextPage,
   };
 }
