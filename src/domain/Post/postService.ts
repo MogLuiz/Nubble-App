@@ -1,8 +1,8 @@
 import { apiAdapter } from '@api';
 
-import { Post } from '@domain/Post/types';
-import { postApi } from '@domain/Post/api';
-import { postAdapter } from '@domain/Post/adapters';
+import { Post } from '@domain/Post';
+import { postApi } from '@domain/Post/postApi';
+import { postAdapter } from '@domain/Post/postAdapter';
 
 import { PaginatedResponseData } from '@types';
 

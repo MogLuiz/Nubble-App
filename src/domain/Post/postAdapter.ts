@@ -1,4 +1,4 @@
-import { Post, PostAPI } from '@domain/Post/types';
+import { Post, PostAPI } from '@domain/Post';
 
 /**
  * @description Converts a PostAPI object to a Post object
