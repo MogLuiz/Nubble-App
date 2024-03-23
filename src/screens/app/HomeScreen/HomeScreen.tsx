@@ -4,13 +4,14 @@ import {FlatList, ListRenderItemInfo, RefreshControl, StyleProp, ViewStyle} from
 import {Post} from '@domain/Post';
 import { usePostList } from '@domain/Post/useCases/usePostList';
 
+import { useScrollToTop } from '@react-navigation/native';
+
 import {Screen} from '@components/Screen';
 import {PostItem} from '@components/PostItem';
 import {HomeHeader} from './parts/HomeHeader';
 import {HomeEmpty} from './components/HomeEmpty'
 
 import {AppTabScreenParams} from '@types';
-import { useScrollToTop } from '@react-navigation/native';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
   const {error, loading, postList, refresh, fetchNextPage} = usePostList()
