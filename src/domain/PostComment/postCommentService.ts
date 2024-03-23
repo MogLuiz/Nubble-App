@@ -15,6 +15,6 @@ const list = async (post_id: number, page: number): Promise<PaginatedResponseDat
   }
 };
 
-export const postService = {
+export const postCommentService = {
   list
 };
