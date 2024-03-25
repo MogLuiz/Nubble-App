@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { PaginatedResponseData } from '@types';
 
 export interface UsePaginatedListResponse<T> {
-  postList: T[];
+  data: T[];
   error: boolean | null;
   loading: boolean;
   fetchNextPage: () => void;
@@ -16,7 +16,7 @@ export const usePaginatedList = <T>(
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const [postList, setPostList] = useState<T[]>([]);
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<boolean | null>(null);
 
   async function fetchInitialData() {
@@ -24,7 +24,7 @@ export const usePaginatedList = <T>(
       setError(null);
       setLoading(true);
       const { data, meta } = await listData(1);
-      setPostList(data);
+      setData(data);
       if (meta.hasNextPage) {
         setPage(2);
         setHasNextPage(true);
@@ -44,7 +44,7 @@ export const usePaginatedList = <T>(
     try {
       setLoading(true);
       const { data, meta } = await listData(page);
-      setPostList(prev => [...prev, ...data]);
+      setData(prev => [...prev, ...data]);
       if (meta.hasNextPage) {
         setPage(prev => prev + 1);
       } else {
@@ -62,7 +62,7 @@ export const usePaginatedList = <T>(
   }, []);
 
   return {
-    postList,
+    data,
     error,
     loading,
     refresh: fetchInitialData,
