@@ -15,12 +15,14 @@ interface ILoginScreenProps extends BoxProps {
   children?: React.ReactNode;
   canGoBack?: boolean;
   scrollable?: boolean;
+  title?: string;
 }
 
 export const Screen = ({
   children,
   canGoBack = false,
   scrollable = false,
+  title,
   style,
   ...boxProps
 }: ILoginScreenProps) => {
