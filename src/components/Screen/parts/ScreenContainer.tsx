@@ -7,7 +7,7 @@ interface IContainerProps {
   backgroundColor: string;
 }
 
-export const Container = ({
+export const ScreenContainer = ({
   children,
   scrollable,
   backgroundColor,
