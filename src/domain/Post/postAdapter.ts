@@ -4,7 +4,7 @@ import { Post, PostAPI } from '@domain/Post';
  * @description Converts a PostAPI object to a Post object
  */
 const toPost = (postAPI: PostAPI): Post => ({
-  id: postAPI.id.toString(),
+  id: postAPI.id,
   text: postAPI.text,
   author: {
     profileURL: postAPI.user.profile_url,

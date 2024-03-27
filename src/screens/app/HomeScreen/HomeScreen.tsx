@@ -28,7 +28,7 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
       <FlatList
         ref={flatListRef}
         data={postList}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderPostItem}
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
