@@ -11,7 +11,7 @@ export type AppStackParams = {
   SettingsScreen: undefined;
   PostCommentScreen: {
     postId: number;
-  }
+  };
 };
 
 const Stack = createNativeStackNavigator<AppStackParams>();
