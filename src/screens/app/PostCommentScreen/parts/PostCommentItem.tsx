@@ -12,7 +12,7 @@ interface PostCommentItemProps {
 export const PostCommentItem = ({postComment}: PostCommentItemProps) => (
   <Box flexDirection="row" alignItems="center" mb="s16" gap="s12">
     <ProfileAvatar imageURL={postComment.author.profileURL} />
-    <Box>
+    <Box flex={1}>
       <Text preset="paragraphSmall" bold>
         {postComment.author.userName}
       </Text>
