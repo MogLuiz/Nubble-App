@@ -17,7 +17,7 @@ export const PostCommentItem = ({postComment}: PostCommentItemProps) => (
         {postComment.author.userName}
       </Text>
       <Text preset="paragraphSmall" color="gray1">
-        {postComment.message} - {postComment.createdAt}
+        {postComment.message} - {postComment.formattedCreatedAt}
       </Text>
     </Box>
   </Box>
