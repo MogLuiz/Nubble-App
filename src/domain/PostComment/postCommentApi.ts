@@ -1,8 +1,8 @@
-import { PostCommentAPI } from '@domain/PostComment/postCommentTypes';
-import { api, PaginatedResponseAPI, PaginationParams } from '@api';
+import {PostCommentAPI} from '@domain/PostComment/postCommentTypes';
+import {api, PaginatedResponseAPI, PaginationParams} from '@api';
 
 const list = async (post_id: number, pagination_params?: PaginationParams) => {
-  const { data } = await api.get<PaginatedResponseAPI<PostCommentAPI>>(
+  const {data} = await api.get<PaginatedResponseAPI<PostCommentAPI>>(
     'user/post_comment',
     {
       params: {
@@ -16,9 +16,9 @@ const list = async (post_id: number, pagination_params?: PaginationParams) => {
 };
 
 const create = async (post_id: number, comment: string) => {
-  const { data } = await api.post<PostCommentAPI>('user/post_comment', {
+  const {data} = await api.post<PostCommentAPI>('user/post_comment', {
     post_id,
-    comment,
+    message: comment,
   });
 
   return data;

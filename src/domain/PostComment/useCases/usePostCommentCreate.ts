@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
-import { postCommentService } from '@domain/PostComment';
+import {postCommentService} from '@domain/PostComment';
 
 export const usePostCommentCreate = (post_id: number) => {
   const [loading, setLoading] = useState(false);

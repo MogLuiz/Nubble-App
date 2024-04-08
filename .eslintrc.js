@@ -5,7 +5,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 1,
     'react-native/no-inline-styles': 0,
     'react-hooks/exhaustive-deps': 0,
-    'prettier/prettier': 0,
   },
   plugins: ['import'],
   // overrides: [
