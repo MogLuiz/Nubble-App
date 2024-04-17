@@ -22,7 +22,8 @@ export const PostCommentScreen = ({
   const {postId} = route.params;
   const {bottomSpacing} = useAppSafeArea();
 
-  const {data, fetchNextPage, hasNextPage} = usePostCommentList(postId);
+  const {data, fetchNextPage, hasNextPage, refresh} =
+    usePostCommentList(postId);
 
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
     return <PostCommentItem postComment={item} />;
@@ -44,7 +45,7 @@ export const PostCommentScreen = ({
           showsVerticalScrollIndicator={false}
         />
 
-        <PostCommentTextMessage postId={postId} />
+        <PostCommentTextMessage postId={postId} onAddComment={refresh} />
       </Box>
     </Screen>
   );
