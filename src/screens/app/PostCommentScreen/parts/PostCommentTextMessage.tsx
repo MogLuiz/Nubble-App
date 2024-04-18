@@ -15,22 +15,17 @@ export const PostCommentTextMessage = ({
   onAddComment,
 }: PostCommentTextMessageProps) => {
   const [comment, setComment] = useState('');
-  const {createPostComment} = usePostCommentCreate(postId);
-
-  const onPressSend = async () => {
-    try {
-      await createPostComment(comment);
+  const {createPostComment} = usePostCommentCreate(postId, {
+    onSucess: () => {
       setComment('');
       Keyboard.dismiss();
       onAddComment?.();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+    },
+  });
 
   return (
     <TextMessage
-      onPressSend={onPressSend}
+      onPressSend={createPostComment}
       onChangeText={setComment}
       value={comment}
       placeholder="Adicione um comentário"

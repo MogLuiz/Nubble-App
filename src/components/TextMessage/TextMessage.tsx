@@ -12,7 +12,7 @@ import {Text} from '@components/Text';
 import {textInput as textInputStyle} from '@components/TextInput/styles';
 
 interface TextMessageProps extends TextInputProps {
-  onPressSend: () => void;
+  onPressSend: (message: string) => void;
 }
 
 export const TextMessage = ({
@@ -46,7 +46,9 @@ export const TextMessage = ({
           {...rest}
         />
 
-        <Pressable disabled={isDisabledToSubmit} onPress={onPressSend}>
+        <Pressable
+          disabled={isDisabledToSubmit}
+          onPress={() => onPressSend(value ?? '')}>
           <Text color={isDisabledToSubmit ? 'gray2' : 'primary'} bold>
             Enviar
           </Text>
