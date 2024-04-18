@@ -1,5 +1,5 @@
 import {postCommentService} from '@domain/PostComment';
-import {usePaginatedList} from '@domain/hooks/usePaginatedList';
+import {usePaginatedList} from '@infra/hooks/usePaginatedList';
 
 export const usePostCommentList = (post_id: number) => {
   const listPostComment = (page: number) => {
