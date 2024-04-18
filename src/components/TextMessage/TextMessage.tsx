@@ -17,7 +17,7 @@ interface TextMessageProps extends TextInputProps {
 
 export const TextMessage = ({
   onPressSend,
-  value,
+  value = '',
   ...rest
 }: TextMessageProps) => {
   const {colors} = useAppTheme();
@@ -48,7 +48,7 @@ export const TextMessage = ({
 
         <Pressable
           disabled={isDisabledToSubmit}
-          onPress={() => onPressSend(value ?? '')}>
+          onPress={() => onPressSend(value)}>
           <Text color={isDisabledToSubmit ? 'gray2' : 'primary'} bold>
             Enviar
           </Text>
