@@ -16,7 +16,7 @@ export const PostCommentTextMessage = ({
 }: PostCommentTextMessageProps) => {
   const [comment, setComment] = useState('');
   const {createPostComment} = usePostCommentCreate(postId, {
-    onSucess: () => {
+    onSuccess: () => {
       setComment('');
       Keyboard.dismiss();
       onAddComment?.();
