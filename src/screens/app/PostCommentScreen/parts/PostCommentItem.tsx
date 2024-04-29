@@ -10,9 +10,13 @@ import {usePostCommentRemove} from '@domain/PostComment/useCases/usePostCommentR
 
 interface PostCommentItemProps {
   postComment: PostComment;
+  onRemoveComment: () => void;
 }
-export const PostCommentItem = ({postComment}: PostCommentItemProps) => {
-  const {mutate} = usePostCommentRemove();
+export const PostCommentItem = ({
+  postComment,
+  onRemoveComment,
+}: PostCommentItemProps) => {
+  const {mutate} = usePostCommentRemove({onSuccess: onRemoveComment});
 
   function onConfirmRemove() {
     Alert.alert('Deseja excluir o comentário?', 'pressione confirmar', [
