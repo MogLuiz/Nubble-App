@@ -12,6 +12,7 @@ import {
 } from './parts';
 
 import {PostComment} from '@/domain/PostComment';
+import {useUser} from '@domain/Auth/hooks/useUser';
 import {usePostCommentList} from '@domain/PostComment/useCases/usePostCommentList';
 
 import {AppScreenParams} from '@types';
@@ -19,14 +20,23 @@ import {AppScreenParams} from '@types';
 export const PostCommentScreen = ({
   route,
 }: AppScreenParams<'PostCommentScreen'>) => {
-  const {postId} = route.params;
+  const {postId, postAuthorId} = route.params;
+
+  const {id} = useUser();
   const {bottomSpacing} = useAppSafeArea();
 
   const {data, fetchNextPage, hasNextPage, refresh} =
     usePostCommentList(postId);
 
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
-    return <PostCommentItem postComment={item} onRemoveComment={refresh} />;
+    return (
+      <PostCommentItem
+        postComment={item}
+        onRemoveComment={refresh}
+        postAuthorId={postAuthorId}
+        userId={id}
+      />
+    );
   }
 
   return (
