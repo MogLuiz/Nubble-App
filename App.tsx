@@ -7,7 +7,7 @@ import {Toast} from '@components/Toast';
 
 import {QueryClientProvider} from '@tanstack/react-query';
 import {queryClient} from '@infra/react-query/queryClient';
-import {ToastProvider} from '@services/toast/useToast';
+import {ToastProvider} from '@services/toast/Provider/ToastProvider';
 
 import {Router} from '@routes';
 
