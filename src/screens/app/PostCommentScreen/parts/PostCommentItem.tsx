@@ -7,6 +7,7 @@ import {ProfileAvatar} from '@components/ProfileAvatar';
 
 import {PostComment, postCommentService} from '@domain/PostComment';
 import {usePostCommentRemove} from '@domain/PostComment/useCases/usePostCommentRemove';
+import {useToast} from '@services/toast/useToast';
 
 interface PostCommentItemProps {
   postComment: PostComment;
@@ -20,7 +21,13 @@ export const PostCommentItem = ({
   postAuthorId,
   userId,
 }: PostCommentItemProps) => {
-  const {mutate} = usePostCommentRemove({onSuccess: onRemoveComment});
+  const {showToast} = useToast();
+  const {mutate} = usePostCommentRemove({
+    onSuccess: () => {
+      onRemoveComment();
+      showToast({message: 'Comentário deletado'});
+    },
+  });
   const isAllowToDelete = postCommentService.isAllowToDelete(
     postComment,
     userId,
