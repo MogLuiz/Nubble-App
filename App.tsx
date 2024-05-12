@@ -7,6 +7,7 @@ import {Toast} from '@components/Toast';
 
 import {QueryClientProvider} from '@tanstack/react-query';
 import {queryClient} from '@infra/react-query/queryClient';
+import {ToastProvider} from '@services/toast/useToast';
 
 import {Router} from '@routes';
 
@@ -14,8 +15,10 @@ const App = (): React.JSX.Element => (
   <QueryClientProvider client={queryClient}>
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <Router />
-        <Toast />
+        <ToastProvider>
+          <Router />
+          <Toast />
+        </ToastProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   </QueryClientProvider>

@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
 interface Toast {
   message: string;
@@ -16,11 +16,13 @@ interface ToastService {
   hiddenToast: () => void;
 }
 
-const ToastContext = createContext<ToastService>({
+const defaultToastInitialValue: ToastService = {
   toast: null,
   showToast: () => {},
   hiddenToast: () => {},
-});
+};
+
+const ToastContext = createContext<ToastService>(defaultToastInitialValue);
 
 export function ToastProvider({children}: React.PropsWithChildren<{}>) {
   const [toast, setToast] = useState<ToastService['toast']>(null);

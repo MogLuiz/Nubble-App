@@ -19,6 +19,7 @@ module.exports = {
           '@infra': './src/infra',
           '@brand': './src/brand',
           '@api': './src/api',
+          '@services': './src/services',
         },
       },
     ],
