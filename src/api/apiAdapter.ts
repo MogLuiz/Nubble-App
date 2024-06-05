@@ -1,6 +1,6 @@
-import { PaginationMetaData } from '@types';
+import {PaginationMetaData} from '@types';
 
-import { MetaDataPaginationAPI } from './apiTypes';
+import {MetaDataPaginationAPI} from './apiTypes';
 
 function toMetaDataPage(meta: MetaDataPaginationAPI): PaginationMetaData {
   return {
