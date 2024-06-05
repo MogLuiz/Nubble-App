@@ -1,6 +1,7 @@
 import {useContext} from 'react';
 import {ToastContext} from './Provider/ToastProvider';
 import {ToastService} from './toastTypes';
+import {useToastZustand} from './useToastZustand';
 
 const useToastContext = (): ToastService => {
   const context = useContext(ToastContext);
@@ -12,5 +13,5 @@ const useToastContext = (): ToastService => {
 };
 
 export function useToast(): ToastService {
-  return useToastContext();
+  return useToastZustand();
 }
