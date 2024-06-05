@@ -7,7 +7,7 @@ import {ProfileAvatar} from '@components/ProfileAvatar';
 
 import {PostComment, postCommentService} from '@domain/PostComment';
 import {usePostCommentRemove} from '@domain/PostComment/useCases/usePostCommentRemove';
-import {useToast} from '@services/toast/useToast';
+import {useToastActions} from '@services/toast/useToast';
 
 interface PostCommentItemProps {
   postComment: PostComment;
@@ -21,7 +21,7 @@ export const PostCommentItem = ({
   postAuthorId,
   userId,
 }: PostCommentItemProps) => {
-  const {showToast} = useToast();
+  const {showToast} = useToastActions();
   const {mutate} = usePostCommentRemove({
     onSuccess: () => {
       onRemoveComment();

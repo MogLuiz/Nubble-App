@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import {ToastContext} from './Provider/ToastProvider';
 import {ToastService} from './toastTypes';
-import {useToastZustand} from './useToastZustand';
+import {useToastZustand, useToastZustandActions} from './useToastZustand';
 
 const useToastContext = (): ToastService => {
   const context = useContext(ToastContext);
@@ -12,6 +12,9 @@ const useToastContext = (): ToastService => {
   return context;
 };
 
-export function useToast(): ToastService {
-  return useToastZustand();
-}
+export const useToastData = (): ToastService['toast'] => useToastZustand();
+
+export const useToastActions = (): Pick<
+  ToastService,
+  'showToast' | 'hideToast'
+> => useToastZustandActions();
