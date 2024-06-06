@@ -3,11 +3,11 @@ import {Dimensions} from 'react-native';
 
 import {$shadowProps} from '@theme';
 
-import {Icon} from '@components/Icon';
+import {Icon, IIconProps} from '@components/Icon';
 import {Text} from '@components/Text';
 import {Box, BoxProps} from '@components/Box';
 
-import {Toast} from '@services/toast/toastTypes';
+import {Toast, ToastPosition, ToastType} from '@services/toast/toastTypes';
 
 const MAX_WIDTH = Dimensions.get('screen').width * 0.9;
 
@@ -16,16 +16,22 @@ type ToastContentProps = {
 };
 
 export const ToastContent = ({toast}: ToastContentProps) => {
-  const position: Required<Toast>['position'] = toast?.position || 'top';
+  const toastType: ToastType = toast?.type || 'success';
+  const position: ToastPosition = toast?.position || 'top';
 
   return (
     <Box {...$boxStyle} style={[{[position]: 100}, $shadowProps]}>
-      <Icon color="success" variant="checkRoundIcon" />
+      <Icon {...dictionary[toastType]} />
       <Text style={{flexShrink: 1}} ml="s16" preset="paragraphMedium" bold>
         {toast.message}
       </Text>
     </Box>
   );
+};
+
+const dictionary: Record<ToastType, IIconProps> = {
+  success: {variant: 'checkRoundIcon', color: 'success'},
+  error: {variant: 'errorRoundIcon', color: 'error'},
 };
 
 const $boxStyle: BoxProps = {
