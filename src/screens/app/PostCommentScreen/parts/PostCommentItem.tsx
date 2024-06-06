@@ -25,7 +25,7 @@ export const PostCommentItem = ({
   const {mutate} = usePostCommentRemove({
     onSuccess: () => {
       onRemoveComment();
-      showToast({message: 'Comentário deletado'});
+      showToast({message: 'Comentário deletado', duration: 5000});
     },
   });
   const isAllowToDelete = postCommentService.isAllowToDelete(

@@ -8,6 +8,7 @@ import {Icon} from '../Icon/Icon';
 import {Text} from '../Text/Text';
 import {Box, BoxProps} from '../Box/Box';
 
+const DEFAULT_DURATION = 2000;
 const MAX_WIDTH = Dimensions.get('screen').width * 0.9;
 
 export function Toast() {
@@ -18,7 +19,7 @@ export function Toast() {
     if (toast) {
       setTimeout(() => {
         hideToast();
-      }, 2000);
+      }, toast.duration || DEFAULT_DURATION);
     }
   }, [toast]);
 
