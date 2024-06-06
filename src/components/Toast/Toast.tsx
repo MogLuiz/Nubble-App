@@ -3,6 +3,7 @@ import {Dimensions} from 'react-native';
 
 import {$shadowProps} from '@theme';
 import {useToastActions, useToastData} from '@services/toast/useToast';
+import {Toast as ToastContract} from '@services/toast/toastTypes';
 
 import {Icon} from '../Icon/Icon';
 import {Text} from '../Text/Text';
@@ -27,8 +28,11 @@ export function Toast() {
     return null;
   }
 
+  const position: Required<ToastContract>['position'] =
+    toast?.position || 'top';
+
   return (
-    <Box top={100} {...$boxStyle}>
+    <Box {...$boxStyle} style={[{[position]: 100}, $shadowProps]}>
       <Icon color="success" variant="checkRoundIcon" />
       <Text style={{flexShrink: 1}} ml="s16" preset="paragraphMedium" bold>
         {toast.message}
@@ -47,5 +51,4 @@ const $boxStyle: BoxProps = {
   flexDirection: 'row',
   opacity: 0.95,
   maxWidth: MAX_WIDTH,
-  style: {...$shadowProps},
 };
