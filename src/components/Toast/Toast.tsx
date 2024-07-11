@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useRef} from 'react';
+import {Animated} from 'react-native';
 
 import {useToastActions, useToastData} from '@services/toast/useToast';
 import {ToastContent} from './parts/ToastContent';
@@ -9,17 +10,45 @@ export function Toast() {
   const toast = useToastData();
   const {hideToast} = useToastActions();
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const runEnteringAnimation = useCallback(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
+
+  const runExitingAnimation = useCallback(
+    (callback: Animated.EndCallback) => {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start(callback);
+    },
+    [fadeAnim],
+  );
+
   useEffect(() => {
     if (toast) {
+      runEnteringAnimation();
+
       setTimeout(() => {
-        hideToast();
+        runExitingAnimation(hideToast);
       }, toast.duration || DEFAULT_DURATION);
     }
-  }, [toast]);
+  }, [toast, runEnteringAnimation, runExitingAnimation, hideToast]);
 
   if (!toast) {
     return null;
   }
 
-  return <ToastContent toast={toast} />;
+  return (
+    <Animated.View
+      style={{position: 'absolute', alignSelf: 'center', opacity: fadeAnim}}>
+      <ToastContent toast={toast} />
+    </Animated.View>
+  );
 }
