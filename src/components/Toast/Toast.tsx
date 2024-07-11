@@ -1,45 +1,13 @@
-import React, {useCallback, useEffect, useRef} from 'react';
+import React from 'react';
 import {Animated} from 'react-native';
 
-import {useToastActions, useToastData} from '@services/toast/useToast';
+import {useToastData} from '@services/toast/useToast';
 import {ToastContent} from './parts/ToastContent';
-
-const DEFAULT_DURATION = 2000;
+import {useToastAction} from './hooks/useToastAction';
 
 export function Toast() {
   const toast = useToastData();
-  const {hideToast} = useToastActions();
-
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-
-  const runEnteringAnimation = useCallback(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnim]);
-
-  const runExitingAnimation = useCallback(
-    (callback: Animated.EndCallback) => {
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-      }).start(callback);
-    },
-    [fadeAnim],
-  );
-
-  useEffect(() => {
-    if (toast) {
-      runEnteringAnimation();
-
-      setTimeout(() => {
-        runExitingAnimation(hideToast);
-      }, toast.duration || DEFAULT_DURATION);
-    }
-  }, [toast, runEnteringAnimation, runExitingAnimation, hideToast]);
+  const {fadeAnim} = useToastAction(toast);
 
   if (!toast) {
     return null;
