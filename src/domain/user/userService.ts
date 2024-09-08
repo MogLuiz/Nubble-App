@@ -3,7 +3,7 @@ import {userApi} from '@domain/user/userApi';
 import {userAdapter} from '@domain/user/userAdapter';
 
 const show = async (id: number): Promise<User> => {
-  const userData = await userApi.Show(id);
+  const userData = await userApi.Show(id.toString());
 
   return userAdapter.toUser(userData);
 };
