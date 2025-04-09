@@ -9,6 +9,7 @@ export const useShowUser = (id: number) => {
 
   const showUserById = useCallback(async () => {
     try {
+      setLoading(true);
       const _user = await userService.show(id);
       setUser(_user);
     } catch (e) {

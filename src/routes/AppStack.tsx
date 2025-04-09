@@ -30,6 +30,6 @@ export const AppStack = () => (
     <Stack.Screen name="AppTabNavigator" component={AppTabNavigator} />
     <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
     <Stack.Screen name="PostCommentScreen" component={PostCommentScreen} />
-    {/* <Stack.Screen name="ProfileScreen" component={MyProfileScreen} /> */}
+    <Stack.Screen name="ProfileScreen" component={MyProfileScreen} />
   </Stack.Navigator>
 );
