@@ -1,23 +1,35 @@
 import React, {useRef} from 'react';
-import {FlatList, ListRenderItemInfo, RefreshControl, StyleProp, ViewStyle} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  RefreshControl,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 import {Post} from '@domain/Post';
-import { usePostList } from '@domain/Post/useCases/usePostList';
+import {usePostList} from '@domain/Post/useCases/usePostList';
 
-import { useScrollToTop } from '@react-navigation/native';
+import {useScrollToTop} from '@react-navigation/native';
 
 import {Screen} from '@components/Screen';
 import {PostItem} from '@components/PostItem';
 import {HomeHeader} from './parts/HomeHeader';
-import {HomeEmpty} from './components/HomeEmpty'
+import {HomeEmpty} from './components/HomeEmpty';
 
 import {AppTabScreenParams} from '@types';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
-  const {error, loading, data: postList, refresh, fetchNextPage} = usePostList()
+  const {
+    error,
+    loading,
+    data: postList,
+    refresh,
+    fetchNextPage,
+  } = usePostList();
 
-  const flatListRef = useRef<FlatList<Post>>(null)
-  useScrollToTop(flatListRef)
+  const flatListRef = useRef<FlatList<Post>>(null);
+  useScrollToTop(flatListRef);
 
   const renderPostItem = ({item}: ListRenderItemInfo<Post>) => (
     <PostItem post={item} />
@@ -34,8 +46,10 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         onEndReachedThreshold={0.1}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={<HomeHeader />}
-        contentContainerStyle={{flex: postList?.length ? undefined : 1 }}
-        ListEmptyComponent={<HomeEmpty loading={loading} error={error} refetch={refresh} />}
+        contentContainerStyle={{flex: postList?.length ? undefined : 1}}
+        ListEmptyComponent={
+          <HomeEmpty loading={loading} error={error} refetch={refresh} />
+        }
         refreshing={loading}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={refresh} />
