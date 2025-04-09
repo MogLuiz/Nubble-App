@@ -45,11 +45,19 @@ target 'NubbleApp' do
   end
 
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    # Parte do React Native
     react_native_post_install(
       installer,
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
+
+    # Adiciona flag -fno-char8_t pra resolver erro do fmt
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] ||= ['']
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] << '-fno-char8_t'
+      end
+    end
   end
 end
