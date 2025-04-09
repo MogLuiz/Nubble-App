@@ -12,12 +12,12 @@ import {ProfileAvatar} from '@components/ProfileAvatar';
 export const MyProfileScreen = ({route}: AppScreenParams<'ProfileScreen'>) => {
   const userId = route.params?.userId;
 
-  const {error, loading, user} = useShowUser(userId);
+  const {isError, isLoading, user} = useShowUser(userId);
 
   return (
     <Screen canGoBack>
-      {loading && <ActivityIndicator color="background" />}
-      {error && <Text> error ao carregar perfil do usuário</Text>}
+      {isLoading && <ActivityIndicator color="background" />}
+      {isError && <Text> error ao carregar perfil do usuário</Text>}
       {user && (
         <Box alignItems="center">
           <ProfileAvatar
