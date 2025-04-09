@@ -16,7 +16,7 @@ export const MyProfileScreen = ({route}: AppScreenParams<'ProfileScreen'>) => {
 
   return (
     <Screen canGoBack>
-      {isLoading && <ActivityIndicator color="background" />}
+      {isLoading && <ActivityIndicator />}
       {isError && <Text> error ao carregar perfil do usuário</Text>}
       {user && (
         <Box alignItems="center">
