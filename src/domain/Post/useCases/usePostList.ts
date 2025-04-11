@@ -1,6 +1,7 @@
-import {Post, postService} from '@domain/Post';
-import {usePaginatedList} from '@infra/hooks/usePaginatedList';
+import { QueryKeys } from '@infra/types';
+import { Post, postService } from '@domain/Post';
+import { usePaginatedList } from '@infra/hooks/usePaginatedList';
 
 export const usePostList = () => {
-  return usePaginatedList<Post>(postService.list);
+  return usePaginatedList<Post>([QueryKeys.PostList], postService.list);
 };

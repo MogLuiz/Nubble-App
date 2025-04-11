@@ -21,8 +21,8 @@ import {AppTabScreenParams} from '@types';
 
 export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
   const {
-    error,
-    loading,
+    isError,
+    isLoading,
     data: postList,
     refresh,
     fetchNextPage,
@@ -48,11 +48,11 @@ export const HomeScreen = ({navigation}: AppTabScreenParams<'HomeScreen'>) => {
         ListHeaderComponent={<HomeHeader />}
         contentContainerStyle={{flex: postList?.length ? undefined : 1}}
         ListEmptyComponent={
-          <HomeEmpty loading={loading} error={error} refetch={refresh} />
+          <HomeEmpty loading={isLoading} error={isError} refetch={refresh} />
         }
-        refreshing={loading}
+        refreshing={isLoading}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refresh} />
+          <RefreshControl refreshing={isLoading} onRefresh={refresh} />
         }
       />
     </Screen>
