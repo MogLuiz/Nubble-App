@@ -31,8 +31,8 @@ export const PostCommentScreen = ({
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
     return (
       <PostCommentItem
+        postId={postId}
         postComment={item}
-        onRemoveComment={refresh}
         postAuthorId={postAuthorId}
         userId={id}
       />

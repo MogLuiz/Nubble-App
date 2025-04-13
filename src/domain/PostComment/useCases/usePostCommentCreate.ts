@@ -29,7 +29,7 @@ export const usePostCommentCreate = (
     },
   })
 
-  const createPostComment = async (message: string) => {
+  const createPostComment = (message: string) => {
     mutate({ message });
   };
 

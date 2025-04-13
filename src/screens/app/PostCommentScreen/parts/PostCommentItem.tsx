@@ -11,20 +11,19 @@ import {useToastActions} from '@services/toast/useToast';
 
 interface PostCommentItemProps {
   postComment: PostComment;
+  postId: number;
   userId: number;
   postAuthorId: number;
-  onRemoveComment: () => void;
 }
 export const PostCommentItem = ({
   postComment,
-  onRemoveComment,
   postAuthorId,
   userId,
+  postId,
 }: PostCommentItemProps) => {
   const {showToast} = useToastActions();
-  const {mutate} = usePostCommentRemove({
+  const {removePostComment} = usePostCommentRemove(postId, {
     onSuccess: () => {
-      onRemoveComment();
       showToast({message: 'Comentário deletado', duration: 5000});
     },
   });
@@ -38,7 +37,7 @@ export const PostCommentItem = ({
     Alert.alert('Deseja excluir o comentário?', 'pressione confirmar', [
       {
         text: 'Confirmar',
-        onPress: () => mutate(postComment.id),
+        onPress: () => removePostComment({postCommentId: postComment.id}),
       },
       {
         text: 'Cancelar',
