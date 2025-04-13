@@ -7,19 +7,16 @@ import {usePostCommentCreate} from '@domain/PostComment/useCases/usePostCommentC
 
 interface PostCommentTextMessageProps {
   postId: number;
-  onAddComment?: () => void;
 }
 
 export const PostCommentTextMessage = ({
   postId,
-  onAddComment,
 }: PostCommentTextMessageProps) => {
   const [comment, setComment] = useState('');
   const {createPostComment} = usePostCommentCreate(postId, {
     onSuccess: () => {
       setComment('');
       Keyboard.dismiss();
-      onAddComment?.();
     },
   });
 
