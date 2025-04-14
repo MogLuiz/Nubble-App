@@ -13,6 +13,7 @@ export function useAuthSignIn(options?: MutationOptions<AuthCredentials>) {
   const mutation = useMutation<AuthCredentials, Error, Variables>({
     mutationFn: ({ email, password }) => authService.signIn(email, password),
     retry: false,
+    onSuccess: credentials => authService.updateToken(credentials.token),
     onError: error => {
       if (options?.onError) {
         options.onError(error.message);
