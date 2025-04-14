@@ -1,4 +1,4 @@
-import {User, UserAPI} from '@domain/user/userTypes';
+import { User, UserAPI } from '@domain/user/userTypes';
 
 const toUser = (userAPI: UserAPI): User => ({
   id: userAPI.id,
@@ -11,4 +11,4 @@ const toUser = (userAPI: UserAPI): User => ({
   isOnline: userAPI.is_online,
 });
 
-export const userAdapter = {toUser};
+export const userAdapter = { toUser };

@@ -12,8 +12,16 @@ import {FormTextInput, FormPasswordInput} from '@components/Form';
 import {LoginSchema, loginSchema} from './loginSchema';
 
 import {AuthScreenParams} from '@/types';
+import {useAuthSignIn} from '@domain/Auth/useCases/useAuthSignIn';
+import {useToastActions} from '@services/toast/useToast';
 
 export const LoginScreen = ({navigation}: AuthScreenParams<'LoginScreen'>) => {
+  const {showToast} = useToastActions();
+  const {isLoading, signIn} = useAuthSignIn({
+    onError: message => {
+      showToast({message, type: 'error'});
+    },
+  });
   const {control, handleSubmit, formState, reset} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -31,8 +39,8 @@ export const LoginScreen = ({navigation}: AuthScreenParams<'LoginScreen'>) => {
     navigation.navigate('ForgotPasswordScreen');
   };
 
-  const submitForm = (data: LoginSchema) => {
-    Alert.alert('Formulário', JSON.stringify(data));
+  const submitForm = ({email, password}: LoginSchema) => {
+    signIn({email, password});
     reset();
   };
 
@@ -72,6 +80,7 @@ export const LoginScreen = ({navigation}: AuthScreenParams<'LoginScreen'>) => {
       </Text>
 
       <Button
+        isLoading={isLoading}
         mt="s48"
         title="Entrar"
         disabled={!formState.isValid}
